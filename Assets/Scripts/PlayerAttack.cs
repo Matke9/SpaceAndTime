@@ -35,11 +35,12 @@ public class PlayerAttack : MonoBehaviour
     {
         //anim.SetTrigger("attack");
         cooldownTimer = 0;
-        fireballs[FindFireball()].transform.position = new Vector3(firePoint.position.x, firePoint.position.y, firePoint.position.z);
-        
-
-
-        fireballs[FindFireball()].GetComponent<Projectile>().SetDirection();;
+        if (GameTimeManager.ReduceTime(5))
+        {
+            fireballs[FindFireball()].transform.position =
+                new Vector3(firePoint.position.x, firePoint.position.y, firePoint.position.z);
+            fireballs[FindFireball()].GetComponent<Projectile>().SetDirection();
+        }
     }
     private int FindFireball()
     {

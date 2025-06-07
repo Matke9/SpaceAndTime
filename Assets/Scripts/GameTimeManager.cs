@@ -24,12 +24,18 @@ public class GameTimeManager : MonoBehaviour
         }
     }
 
-    public static void ReduceTime(float time)
+    public static bool ReduceTime(float time)
     {
-        gameTime -= time;
-        if (gameTime <= 0)
+        if (gameTime - time > 0)
         {
+            gameTime -= time;
+            return true;
+        }
+        else
+        {
+            Debug.Log("Died"); 
             gameTime = 0;
+            return false;
         }
     }
 }

@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float detectionRange = 10f;
     [SerializeField] private float stoppingDistance = 0.1f; // Distance at which enemy stops
     [SerializeField] private LayerMask obstacleLayer;
-   
+    
 
     private Vector3 lastKnownPlayerPosition;
     private bool canSeePlayer;
