@@ -21,7 +21,13 @@ public class DragDropSystem : MonoBehaviour
         {
             if (draggableObjects.TryGetValue(GetMouseCell(), out draggedObject))
             {
-                StartDragging(draggedObject);
+                // Proveravamo kolizije tokom prevlačenja
+                Vector3 targetPos = GetNewPositionInt();
+                canPlace = !CheckTileOccupied(targetPos);
+                if (canPlace)
+                {
+                    StartDragging(draggedObject);
+                }
             }
         }
         
@@ -32,13 +38,6 @@ public class DragDropSystem : MonoBehaviour
                 GetNewPositionMouse(), 
                 lerpSpeed * Time.deltaTime
             );
-
-            // Proveravamo kolizije tokom prevlačenja
-            Vector3 targetPos = GetNewPositionInt();
-            canPlace = !CheckTileOccupied(targetPos);
-            
-            // Vizuelni feedback
-            UpdatePlacementVisual();
 
             if (Input.GetMouseButtonDown(1))
             {
@@ -65,19 +64,6 @@ public class DragDropSystem : MonoBehaviour
         );
 
         return colliders.Length > 0;
-    }
-
-    private void UpdatePlacementVisual()
-    {
-        // Možete dodati vizuelni feedback ovde
-        // Na primer, promena boje sprite-a ili alpha vrednosti
-        SpriteRenderer sprite = draggedObject.GetComponent<SpriteRenderer>();
-        if (sprite != null)
-        {
-            Color color = sprite.color;
-            color.a = canPlace ? 1f : 0.5f; // Providno ako ne može da se postavi
-            sprite.color = color;
-        }
     }
 
     private void StartDragging(GameObject draggedObject)
