@@ -47,6 +47,8 @@ public class Projectile : MonoBehaviour
         boxCollider.enabled = true;
 
         Vector3 dirrection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float angle = Mathf.Atan2(dirrection.y, dirrection.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
         dirrection.z = 0;
         dirrection.Normalize();;
         
