@@ -85,6 +85,7 @@ public class Enemy : MonoBehaviour
     {
         if (hasReachedLastPosition && !canSeePlayer)
         {
+            transform.rotation = Quaternion.Euler(0,0,0);;
             rb.linearVelocity = Vector2.zero;
             return;
         }
