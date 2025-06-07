@@ -72,14 +72,13 @@ public class PlayerController : MonoBehaviour
         }
         if (moveLeftRight != 0 || moveUpDown != 0)
         {
-            Debug.Log("Should");
+
             currentWoddle += sideWoddle;;
 
             if (Mathf.Abs(currentWoddle) > 10f)
             {
-                Debug.Log("Woddle");
+
                 sideWoddle *= -1;
-                // Clamp the rotation to -10 or 10
                 currentWoddle = Mathf.Sign(currentWoddle) * 10f;
             }
             playerTransform.rotation = Quaternion.Euler(0,yRotation,currentWoddle);;
