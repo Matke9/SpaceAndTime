@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c4c6fce05fadc341bda60d0db07cc63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCooldown: 0.8
+  attackCooldown: 0.3
   firePoint: {fileID: 1139474255413560626}
   fireballHolder: {fileID: 0}
 --- !u!1 &7621830954914974969

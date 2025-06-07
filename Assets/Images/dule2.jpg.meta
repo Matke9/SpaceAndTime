@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dule2_0: 6074122875808561144
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
