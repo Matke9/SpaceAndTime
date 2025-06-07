@@ -58,8 +58,19 @@ public class PlayerController : MonoBehaviour
         {
             moveLeftRight = 1;
         }
-        
+
+        if (pressedLeft && Mathf.RoundToInt(Mathf.Abs(playerTransform.rotation.y)) == 1)
+        {
+            
+            playerTransform.rotation = Quaternion.Euler(0, 0, 0);
+        }
+        else if (pressedRight && playerTransform.rotation.y == 0f)
+        {
+            playerTransform.rotation = Quaternion.Euler(0, 180, 0);
+        }
+
         playerRigidbody2D.linearVelocity = new Vector2(moveLeftRight * moveSpeed, moveUpDown * moveSpeed);
+        
         if (pressedUp)
         {
             lastInput = 1;
