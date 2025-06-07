@@ -15,6 +15,9 @@ public class Enemy : MonoBehaviour
     private bool isMovingToLastPosition;
     private bool hasReachedLastPosition;
     private Rigidbody2D rb;
+    private float sideWoddle = 2f;
+    private float currentWoddle = 0f;
+    private float yRotation = 0f;
 
     private void Start()
     {
@@ -103,8 +106,29 @@ public class Enemy : MonoBehaviour
         // Okretanje sprite-a
         if (direction.x != 0)
         {
-            transform.localScale = new Vector3(Mathf.Sign(direction.x), 1, 1);
+            transform.localScale = new Vector3(-(Mathf.Sign(direction.x)*0.67f), 0.67f, 1);
         }
+        /*
+        if (direction.x < 0)
+        {
+            Debug.Log("Levo");
+            yRotation = 0;
+        }
+        else if (direction.x > 0)
+        {
+            Debug.Log("Desno");
+            yRotation = 180;
+        }
+        */
+        currentWoddle += sideWoddle;;
+
+        if (Mathf.Abs(currentWoddle) > 10f)
+        {
+
+            sideWoddle *= -1;
+            currentWoddle = Mathf.Sign(currentWoddle) * 10f;
+        }
+        transform.rotation = Quaternion.Euler(0,0,currentWoddle);;
     }
 
     public void Die()
