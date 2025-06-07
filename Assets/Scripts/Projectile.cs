@@ -27,6 +27,7 @@ public class Projectile : MonoBehaviour
         else if (direction == 2)
         {
             
+            
             transform.Translate(0, -movementSpeed, 0);
         }
         else if (direction == 3)
