@@ -57,7 +57,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 1000
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,12 +109,12 @@ TextureImporter:
       name: EnemyDioda3_0
       rect:
         serializedVersion: 2
-        x: 588
-        y: 485
-        width: 393
-        height: 760
+        x: 547
+        y: 195
+        width: 434
+        height: 1050
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
@@ -127,55 +127,11 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
-    - serializedVersion: 2
-      name: EnemyDioda3_1
-      rect:
-        serializedVersion: 2
-        x: 548
-        y: 196
-        width: 99
-        height: 235
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: d330719274592eb80800000000000000
-      internalID: -8366961024836369603
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: EnemyDioda3_2
-      rect:
-        serializedVersion: 2
-        x: 833
-        y: 240
-        width: 104
-        height: 217
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ddbae5749b18da7d0800000000000000
-      internalID: -2905523551817782307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
     outline: []
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 99bdf2928e8005643a1b2cae0c39c119
     internalID: 0
     vertices: []
     indices: 
@@ -184,7 +140,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      EnemyDioda3_0: 6343308756041474159
+      EnemyDioda3_1: -8366961024836369603
+      EnemyDioda3_2: -2905523551817782307
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

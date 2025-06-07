@@ -1,13 +1,34 @@
 fileFormatVersion: 2
-guid: 8dda2876980d52d419f12237bf5d6364
+guid: fba3e549054513f4d88f908fcf786f01
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3899526834895193350
-    second: EnemyHourglass2_0
+      213: 2911539044929720160
+    second: projektil (3)_0
   - first:
-      213: 4450893439699735443
-    second: EnemyHourglass2_1
+      213: 8464639816324927651
+    second: projektil (3)_1
+  - first:
+      213: -5746530713093762254
+    second: projektil (3)_2
+  - first:
+      213: 8968760240293793113
+    second: projektil (3)_3
+  - first:
+      213: -309233074625369525
+    second: projektil (3)_4
+  - first:
+      213: 6011687403533319285
+    second: projektil (3)_5
+  - first:
+      213: 8776293245272248256
+    second: projektil (3)_6
+  - first:
+      213: -8653422499187973411
+    second: projektil (3)_7
+  - first:
+      213: 5776530396614348899
+    second: projektil (3)_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -54,7 +75,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1500
+  spritePixelsToUnits: 175
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -103,13 +124,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: EnemyHourglass2_1
+      name: projektil (3)_4
       rect:
         serializedVersion: 2
-        x: 505
-        y: 6
-        width: 613
-        height: 1264
+        x: 378
+        y: 519
+        width: 242
+        height: 149
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,8 +139,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 3935b666000c4cd30800000000000000
-      internalID: 4450893439699735443
+      spriteID: b4a2722382265bbf0800000000000000
+      internalID: -309233074625369525
       vertices: []
       indices: 
       edges: []
@@ -128,7 +149,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 06e95ff6adf28964d99ad3258abc54b2
+    spriteID: 70754255b18135644871f0d30cd3fd65
     internalID: 0
     vertices: []
     indices: 
@@ -138,9 +159,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      EnemyHourglass2_0: 3899526834895193350
-      EnemyHourglass2_1: 4450893439699735443
-      EnemyHourglass2_2: -1852768033
+      projektil (3)_9: 1409667764
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
