@@ -119,6 +119,75 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &310387482
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1602895949971252894, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_Name
+      value: Projectile (8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 1602895949971252894, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.6044263
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1815134
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.020531185
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
 --- !u!1 &435280874 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3329743710146276896, guid: f2477827445f6ae4e9933abe98bd2435, type: 3}
@@ -621,7 +690,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: -5755890261792335035, guid: 9928f179d89ffe843aa5dde7afe084f1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1007,7 +1076,7 @@ PrefabInstance:
       objectReference: {fileID: -309233074625369525, guid: fba3e549054513f4d88f908fcf786f01, type: 3}
     - target: {fileID: 3597509363850086816, guid: 6481b3294eba3d54681ff400e083eec2, type: 3}
       propertyPath: m_Color.b
-      value: 0.7959271
+      value: 0.7277357
       objectReference: {fileID: 0}
     - target: {fileID: 3597509363850086816, guid: 6481b3294eba3d54681ff400e083eec2, type: 3}
       propertyPath: m_Color.g
@@ -1015,7 +1084,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3597509363850086816, guid: 6481b3294eba3d54681ff400e083eec2, type: 3}
       propertyPath: m_Color.r
-      value: 0.86415094
+      value: 0.78867924
       objectReference: {fileID: 0}
     - target: {fileID: 3597509363850086816, guid: 6481b3294eba3d54681ff400e083eec2, type: 3}
       propertyPath: m_WasSpriteAssigned
@@ -1024,6 +1093,10 @@ PrefabInstance:
     - target: {fileID: 6288778422150618018, guid: 6481b3294eba3d54681ff400e083eec2, type: 3}
       propertyPath: m_Name
       value: ProjectileHolder
+      objectReference: {fileID: 0}
+    - target: {fileID: 9177658487813765512, guid: 6481b3294eba3d54681ff400e083eec2, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1697,3 +1770,4 @@ SceneRoots:
   - {fileID: 2590523548087056254}
   - {fileID: 4640039706811058307}
   - {fileID: 3352688517583002554}
+  - {fileID: 310387482}
