@@ -7,6 +7,9 @@ public class PlayerController : MonoBehaviour
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody2D;
     private int lastInput = 1;
+    private float sideWoddle = 0.5f;
+    private float currentWoddle = 0f;
+    private float yRotation = 0f;
     
     public int GetLastInput()
     {
@@ -58,15 +61,28 @@ public class PlayerController : MonoBehaviour
         {
             moveLeftRight = 1;
         }
-
+        
         if (pressedLeft && Mathf.RoundToInt(Mathf.Abs(playerTransform.rotation.y)) == 1)
         {
-            
-            playerTransform.rotation = Quaternion.Euler(0, 0, 0);
+            yRotation = 0;
         }
         else if (pressedRight && playerTransform.rotation.y == 0f)
         {
-            playerTransform.rotation = Quaternion.Euler(0, 180, 0);
+            yRotation = 180;
+        }
+        if (moveLeftRight != 0 || moveUpDown != 0)
+        {
+
+            currentWoddle += sideWoddle;;
+
+            if (Mathf.Abs(currentWoddle) > 10f)
+            {
+
+                sideWoddle *= -1;
+                currentWoddle = Mathf.Sign(currentWoddle) * 10f;
+            }
+            playerTransform.rotation = Quaternion.Euler(0,yRotation,currentWoddle);;
+
         }
 
         playerRigidbody2D.linearVelocity = new Vector2(moveLeftRight * moveSpeed, moveUpDown * moveSpeed);

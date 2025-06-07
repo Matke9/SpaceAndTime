@@ -8,7 +8,7 @@ public class DragDropSystem : MonoBehaviour
     [SerializeField] private float lerpSpeed = 15f;
     [SerializeField] private float rotationLerpSpeed = 5f;
     [SerializeField] private LayerMask collisionCheckMask; // Layeri koje proveravamo
-    [SerializeField] private Vector2 tileCheckSize = new Vector2(2f, 2f); // Veličina provere
+    [SerializeField] private Vector2 tileCheckSize = new Vector2(1.8f, 1.8f); // Veličina provere
     
     private GameObject draggedObject;
     public Dictionary<Vector2Int, GameObject> draggableObjects = new Dictionary<Vector2Int, GameObject>();
@@ -47,6 +47,9 @@ public class DragDropSystem : MonoBehaviour
                 Vector3 currentRotation = draggedObject.transform.rotation.eulerAngles;
                 targetRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, currentRotation.z - 90f);
                 is_rotating = true;
+                Vector3 brimRotation = draggedObject.GetComponent<Draggable>().outerBrim.transform.rotation.eulerAngles;
+                brimRotation.z += 90f;
+                draggedObject.GetComponent<Draggable>().outerBrim.transform.rotation = Quaternion.Euler(brimRotation);
             }
 
             // Rotacija samo kad je potrebna
@@ -89,44 +92,60 @@ public class DragDropSystem : MonoBehaviour
 
     private void StartDragging(GameObject draggedObject)
     {
+        UpdateOuterBrims();
         oldPosition = draggedObject.transform.position;
         is_dragging = true;
         SetLayerRecursively(draggedObject, 8);
         targetRotation = draggedObject.transform.rotation;
         is_rotating = false;
-
     }
     
     private void StopDragging()
     {
         Vector2Int newCell = GetMouseCell();
+        Vector3Int oldCell = grid.WorldToCell(oldPosition);
+        Vector2Int oldPos = new Vector2Int(oldCell.x, oldCell.y);
         
-        // Proveravamo da li možemo postaviti objekat na novu poziciju
         if (!canPlace || draggableObjects.ContainsKey(newCell))
         {
-            // Ako ne možemo, vraćamo na staru poziciju
             draggedObject.transform.position = oldPosition;
         }
         else
         {
-            // Ako možemo, postavljamo na novu poziciju
-            Vector3Int oldCell = grid.WorldToCell(oldPosition);
-            draggableObjects.Remove(new Vector2Int(oldCell.x, oldCell.y));
+            draggableObjects.Remove(oldPos);
+            UpdateTileAndNeighbors(oldPos);
             draggedObject.transform.position = GetNewPositionInt();
             draggableObjects.Add(newCell, draggedObject);
+            
+            // Update-ujemo susede na novoj poziciji
+            UpdateTileAndNeighbors(newCell);
         }
-
-        // Resetujemo vizuelni feedback
-        SpriteRenderer sprite = draggedObject.GetComponent<SpriteRenderer>();
-        if (sprite != null)
-        {
-            Color color = sprite.color;
-            color.a = 1f;
-            sprite.color = color;
-        }
-
+        
         is_dragging = false;
         SetLayerRecursively(draggedObject, 7);
+    }
+
+    public void UpdateTileAndNeighbors(Vector2Int centerPos)
+    {
+        // Update centralnog tile-a
+        UpdateOuterBrims(centerPos);
+        
+        // Update suseda
+        Vector2Int[] neighbors = new Vector2Int[]
+        {
+            centerPos + Vector2Int.right,
+            centerPos + Vector2Int.left,
+            centerPos + Vector2Int.up,
+            centerPos + Vector2Int.down
+        };
+
+        foreach (Vector2Int neighbor in neighbors)
+        {
+            if (draggableObjects.ContainsKey(neighbor))
+            {
+                UpdateOuterBrims(neighbor);
+            }
+        }
     }
 
     Vector2Int GetMouseCell()
@@ -139,8 +158,8 @@ public class DragDropSystem : MonoBehaviour
     {
         Vector2Int cellPos = GetMouseCell();
         Vector3 newPos = grid.CellToWorld(new Vector3Int(cellPos.x, cellPos.y, 0));
-        newPos.x += 0.5f;
-        newPos.y += 0.5f;
+        newPos.x += 1f;
+        newPos.y += 1f;
         newPos.z = 0;
         return newPos;
     }
@@ -162,14 +181,77 @@ public class DragDropSystem : MonoBehaviour
         }
     }
 
-    // Vizuelni prikaz područja provere u editoru
-    private void OnDrawGizmos()
+    private void UpdateOuterBrims()
     {
-        if (is_dragging)
+        Vector2Int tilePos = (Vector2Int)grid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition));
+        GameObject center_tile;
+        bool has_center = draggableObjects.TryGetValue(tilePos, out center_tile);
+
+        // Proveravamo sve susedne tile-ove
+        CheckAndUpdateWall(tilePos, Vector2Int.right); // Desno
+        CheckAndUpdateWall(tilePos, Vector2Int.left);  // Levo
+        CheckAndUpdateWall(tilePos, Vector2Int.up);    // Gore
+        CheckAndUpdateWall(tilePos, Vector2Int.down);  // Dole
+        
+    }
+    
+    private void UpdateOuterBrims(Vector2Int tilePos)
+    {
+        GameObject currentTile;
+        if (!draggableObjects.TryGetValue(tilePos, out currentTile)) return;
+
+        // Proveravamo sve susedne tile-ove
+        CheckAndUpdateWall(tilePos, Vector2Int.right); // Desno
+        CheckAndUpdateWall(tilePos, Vector2Int.left);  // Levo
+        CheckAndUpdateWall(tilePos, Vector2Int.up);    // Gore
+        CheckAndUpdateWall(tilePos, Vector2Int.down);  // Dole
+    }
+
+
+    private void CheckAndUpdateWall(Vector2Int centerPos, Vector2Int direction)
+    {
+        GameObject centerTile;
+        if (draggableObjects.TryGetValue(centerPos, out centerTile))
         {
-            Gizmos.color = canPlace ? Color.green : Color.red;
-            Vector3 position = GetNewPositionInt();
-            Gizmos.DrawWireCube(position, new Vector3(tileCheckSize.x, tileCheckSize.y, 0.1f));
+            Vector2Int neighborPos = centerPos + direction;
+            bool hasNeighbor = draggableObjects.ContainsKey(neighborPos);
+
+            // Dobavljamo wall objekat za trenutnu stranu
+            Transform wall = GetWallForDirection(centerTile.transform, direction);
+            if (wall != null)
+            {
+                // Aktiviramo zid ako nema suseda, deaktiviramo ako ima
+                wall.gameObject.SetActive(!hasNeighbor);
+            }
         }
+    }
+    
+
+    private Transform GetWallForDirection(Transform tileTransform, Vector2Int direction)
+    {
+        string wallName;
+        if (direction == Vector2Int.right) wallName = "rightBrim";
+        else if (direction == Vector2Int.left) wallName = "leftBrim";
+        else if (direction == Vector2Int.up) wallName = "topBrim";
+        else if (direction == Vector2Int.down) wallName = "bottomBrim";
+        else return null;
+
+        Transform outerBrim = tileTransform.Find("OuterBrim");
+        if (outerBrim != null)
+        {
+            return outerBrim.Find(wallName);
+        }
+        return null;
+    }
+
+    // Modifikujemo Draggable.Start() da inicijalizuje sve susede
+    public void InitializeTile(Vector2Int gridPos)
+    {
+        if (!draggableObjects.ContainsKey(gridPos))
+        {
+            GameObject tile = GameObject.Find(gridPos.ToString());
+            draggableObjects.Add(gridPos, tile);
+        }
+        UpdateTileAndNeighbors(gridPos);
     }
 }
