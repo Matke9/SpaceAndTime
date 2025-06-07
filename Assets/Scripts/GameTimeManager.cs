@@ -33,6 +33,7 @@ public class GameTimeManager : MonoBehaviour
         }
         else
         {
+            GameManager.GameOver();
             Debug.Log("Died"); 
             gameTime = 0;
             return false;
