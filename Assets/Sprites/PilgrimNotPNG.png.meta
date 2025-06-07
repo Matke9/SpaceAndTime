@@ -1,0 +1,955 @@
+fileFormatVersion: 2
+guid: c416a058190efe342aaf03b29371d457
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -881922064822160355
+    second: PilgrimNotPNG_0
+  - first:
+      213: -1917948653283312713
+    second: PilgrimNotPNG_1
+  - first:
+      213: -7234176913601662618
+    second: PilgrimNotPNG_2
+  - first:
+      213: 256477717263601982
+    second: PilgrimNotPNG_3
+  - first:
+      213: -6319192427932967866
+    second: PilgrimNotPNG_4
+  - first:
+      213: -971461635730350463
+    second: PilgrimNotPNG_5
+  - first:
+      213: -6263637850480997870
+    second: PilgrimNotPNG_6
+  - first:
+      213: 8368571362044294022
+    second: PilgrimNotPNG_7
+  - first:
+      213: -4748118731756575783
+    second: PilgrimNotPNG_8
+  - first:
+      213: -8940580102110078070
+    second: PilgrimNotPNG_9
+  - first:
+      213: 5091234803747474033
+    second: PilgrimNotPNG_10
+  - first:
+      213: -3992328893605239000
+    second: PilgrimNotPNG_11
+  - first:
+      213: -6406756884899767490
+    second: PilgrimNotPNG_12
+  - first:
+      213: -723643701702274791
+    second: PilgrimNotPNG_13
+  - first:
+      213: -4155846669637481060
+    second: PilgrimNotPNG_14
+  - first:
+      213: -7376791084469076844
+    second: PilgrimNotPNG_15
+  - first:
+      213: -4284527496593485212
+    second: PilgrimNotPNG_16
+  - first:
+      213: 7501077099224651137
+    second: PilgrimNotPNG_17
+  - first:
+      213: -8612550801652430069
+    second: PilgrimNotPNG_18
+  - first:
+      213: 9128529738860891566
+    second: PilgrimNotPNG_19
+  - first:
+      213: -3605080873056055458
+    second: PilgrimNotPNG_20
+  - first:
+      213: 2843961629589605019
+    second: PilgrimNotPNG_21
+  - first:
+      213: -4794488396121656084
+    second: PilgrimNotPNG_22
+  - first:
+      213: -469249476102213169
+    second: PilgrimNotPNG_23
+  - first:
+      213: -4595673950626704940
+    second: PilgrimNotPNG_24
+  - first:
+      213: 7612492245708407153
+    second: PilgrimNotPNG_25
+  - first:
+      213: -3124922431676763289
+    second: PilgrimNotPNG_26
+  - first:
+      213: 216242049540423112
+    second: PilgrimNotPNG_27
+  - first:
+      213: 385059988157092285
+    second: PilgrimNotPNG_28
+  - first:
+      213: -2369282199103988725
+    second: PilgrimNotPNG_29
+  - first:
+      213: 4943609175128655205
+    second: PilgrimNotPNG_30
+  - first:
+      213: -8515663789156680120
+    second: PilgrimNotPNG_31
+  - first:
+      213: 3434966459744858080
+    second: PilgrimNotPNG_32
+  - first:
+      213: 2136998134313016360
+    second: PilgrimNotPNG_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 450
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PilgrimNotPNG_0
+      rect:
+        serializedVersion: 2
+        x: 352
+        y: 541
+        width: 788
+        height: 884
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1432befd88c2c3f0800000000000000
+      internalID: -881922064822160355
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_1
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 730
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7bbfb9f8cd31265e0800000000000000
+      internalID: -1917948653283312713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_4
+      rect:
+        serializedVersion: 2
+        x: 1334
+        y: 1093
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64c97b1a7f7bd48a0800000000000000
+      internalID: -6319192427932967866
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_5
+      rect:
+        serializedVersion: 2
+        x: 1340
+        y: 261
+        width: 14
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18e5f511acca482f0800000000000000
+      internalID: -971461635730350463
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_6
+      rect:
+        serializedVersion: 2
+        x: 1384
+        y: 1142
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 21a8368af861319a0800000000000000
+      internalID: -6263637850480997870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_7
+      rect:
+        serializedVersion: 2
+        x: 1446
+        y: 413
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6833820b053232470800000000000000
+      internalID: 8368571362044294022
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_8
+      rect:
+        serializedVersion: 2
+        x: 1451
+        y: 609
+        width: 7
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d3654a8b2b4b1eb0800000000000000
+      internalID: -4748118731756575783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_9
+      rect:
+        serializedVersion: 2
+        x: 1456
+        y: 412
+        width: 18
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a8b9dcf24cdace380800000000000000
+      internalID: -8940580102110078070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_10
+      rect:
+        serializedVersion: 2
+        x: 1463
+        y: 696
+        width: 9
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 17a49795413b7a640800000000000000
+      internalID: 5091234803747474033
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_11
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 707
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 827a12606066898c0800000000000000
+      internalID: -3992328893605239000
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_12
+      rect:
+        serializedVersion: 2
+        x: 1473
+        y: 653
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3bd241ce80a617a0800000000000000
+      internalID: -6406756884899767490
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_13
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 688
+        width: 8
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 911561823e915f5f0800000000000000
+      internalID: -723643701702274791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_14
+      rect:
+        serializedVersion: 2
+        x: 1479
+        y: 653
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c9d844bf8777356c0800000000000000
+      internalID: -4155846669637481060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_15
+      rect:
+        serializedVersion: 2
+        x: 1487
+        y: 521
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49cb3f3b79f50a990800000000000000
+      internalID: -7376791084469076844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_16
+      rect:
+        serializedVersion: 2
+        x: 1494
+        y: 791
+        width: 14
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 462d62731fc4a84c0800000000000000
+      internalID: -4284527496593485212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_17
+      rect:
+        serializedVersion: 2
+        x: 1495
+        y: 522
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1855a1c11ed291860800000000000000
+      internalID: 7501077099224651137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_18
+      rect:
+        serializedVersion: 2
+        x: 1504
+        y: 564
+        width: 17
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0b40895da21a7880800000000000000
+      internalID: -8612550801652430069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_19
+      rect:
+        serializedVersion: 2
+        x: 1505
+        y: 405
+        width: 6
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ead8466be6d0fae70800000000000000
+      internalID: 9128529738860891566
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_20
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 709
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5f40f6eb0e28fdc0800000000000000
+      internalID: -3605080873056055458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_21
+      rect:
+        serializedVersion: 2
+        x: 1506
+        y: 549
+        width: 9
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9a878eb808c77720800000000000000
+      internalID: 2843961629589605019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_22
+      rect:
+        serializedVersion: 2
+        x: 1510
+        y: 441
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce4bf6db43e867db0800000000000000
+      internalID: -4794488396121656084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_23
+      rect:
+        serializedVersion: 2
+        x: 1511
+        y: 592
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc1b3e17614ec79f0800000000000000
+      internalID: -469249476102213169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_24
+      rect:
+        serializedVersion: 2
+        x: 1521
+        y: 281
+        width: 6
+        height: 7
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4d1116d04e2e830c0800000000000000
+      internalID: -4595673950626704940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_25
+      rect:
+        serializedVersion: 2
+        x: 1524
+        y: 362
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1718dd06d5105a960800000000000000
+      internalID: 7612492245708407153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_26
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 577
+        width: 13
+        height: 14
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 763b14dda9b02a4d0800000000000000
+      internalID: -3124922431676763289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_27
+      rect:
+        serializedVersion: 2
+        x: 1529
+        y: 754
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8cdfb549ffe300300800000000000000
+      internalID: 216242049540423112
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_28
+      rect:
+        serializedVersion: 2
+        x: 1531
+        y: 699
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db1d153e402085500800000000000000
+      internalID: 385059988157092285
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_29
+      rect:
+        serializedVersion: 2
+        x: 1535
+        y: 632
+        width: 9
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0c10c5946e9e1fd0800000000000000
+      internalID: -2369282199103988725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_30
+      rect:
+        serializedVersion: 2
+        x: 1551
+        y: 504
+        width: 16
+        height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 565c7e73a5a3b9440800000000000000
+      internalID: 4943609175128655205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_31
+      rect:
+        serializedVersion: 2
+        x: 1555
+        y: 397
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84eb8a4d6e842d980800000000000000
+      internalID: -8515663789156680120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_32
+      rect:
+        serializedVersion: 2
+        x: 1556
+        y: 733
+        width: 7
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ef2970cbc37baf20800000000000000
+      internalID: 3434966459744858080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PilgrimNotPNG_33
+      rect:
+        serializedVersion: 2
+        x: 1161
+        y: 126
+        width: 7
+        height: 6
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82c56691b7428ad10800000000000000
+      internalID: 2136998134313016360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 83276c56e225c2b44b593209be60f179
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      PilgrimNotPNG_0: -881922064822160355
+      PilgrimNotPNG_1: -1917948653283312713
+      PilgrimNotPNG_10: 5091234803747474033
+      PilgrimNotPNG_11: -3992328893605239000
+      PilgrimNotPNG_12: -6406756884899767490
+      PilgrimNotPNG_13: -723643701702274791
+      PilgrimNotPNG_14: -4155846669637481060
+      PilgrimNotPNG_15: -7376791084469076844
+      PilgrimNotPNG_16: -4284527496593485212
+      PilgrimNotPNG_17: 7501077099224651137
+      PilgrimNotPNG_18: -8612550801652430069
+      PilgrimNotPNG_19: 9128529738860891566
+      PilgrimNotPNG_20: -3605080873056055458
+      PilgrimNotPNG_21: 2843961629589605019
+      PilgrimNotPNG_22: -4794488396121656084
+      PilgrimNotPNG_23: -469249476102213169
+      PilgrimNotPNG_24: -4595673950626704940
+      PilgrimNotPNG_25: 7612492245708407153
+      PilgrimNotPNG_26: -3124922431676763289
+      PilgrimNotPNG_27: 216242049540423112
+      PilgrimNotPNG_28: 385059988157092285
+      PilgrimNotPNG_29: -2369282199103988725
+      PilgrimNotPNG_30: 4943609175128655205
+      PilgrimNotPNG_31: -8515663789156680120
+      PilgrimNotPNG_32: 3434966459744858080
+      PilgrimNotPNG_33: 2136998134313016360
+      PilgrimNotPNG_4: -6319192427932967866
+      PilgrimNotPNG_5: -971461635730350463
+      PilgrimNotPNG_6: -6263637850480997870
+      PilgrimNotPNG_7: 8368571362044294022
+      PilgrimNotPNG_8: -4748118731756575783
+      PilgrimNotPNG_9: -8940580102110078070
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
