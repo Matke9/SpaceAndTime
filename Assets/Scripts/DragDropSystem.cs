@@ -5,6 +5,7 @@ using UnityEngine;
 public class DragDropSystem : MonoBehaviour
 {
     [SerializeField] public Grid grid;
+    [SerializeField] private float lerpSpeed = 15f; // Dodajemo kontrolu brzine lerpa
     private GameObject draggedObject;
 
     public Dictionary<Vector2Int, GameObject> draggableObjects =
@@ -16,7 +17,6 @@ public class DragDropSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            //Debug.Log(grid.WorldToCell(Camera.main.ScreenToWorldPoint(Input.mousePosition)));
             if (draggableObjects.TryGetValue(GetMouseCell(), out draggedObject))
             {
                 StartDragging(draggedObject);
@@ -30,8 +30,14 @@ public class DragDropSystem : MonoBehaviour
 
         if (is_dragging)
         {
-            draggedObject.transform.position = GetNewPositionMouse();
-            if (Input.GetMouseButtonUp(1))
+            // Koristimo Time.deltaTime za smooth lerp
+            draggedObject.transform.position = Vector3.Lerp(
+                draggedObject.transform.position, 
+                GetNewPositionMouse(), 
+                lerpSpeed * Time.deltaTime
+            );
+
+            if (Input.GetMouseButtonDown(1)) // Promenili smo u MouseButtonDown da ne rotira kontinualno
             {
                 Vector3 rotation = draggedObject.transform.rotation.eulerAngles;
                 rotation.z -= 90;
@@ -56,6 +62,7 @@ public class DragDropSystem : MonoBehaviour
         newPos.z = 0;
         return newPos;
     }
+
     Vector3 GetNewPositionMouse()
     {
         Vector3 newPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
@@ -67,8 +74,7 @@ public class DragDropSystem : MonoBehaviour
     {
         oldPosition = draggedObject.transform.position;
         is_dragging = true;
-        Draggable draggable = draggedObject.GetComponent<Draggable>();
-        draggable.collider.enabled = false;
+        SetLayerRecursively(draggedObject, 8); // Postavljamo layer rekurzivno
     }
     
     private void StopDragging()
@@ -87,13 +93,19 @@ public class DragDropSystem : MonoBehaviour
             draggableObjects.Add(cellPos, draggedObject);
         }
         is_dragging = false;
+        SetLayerRecursively(draggedObject, 7); // Vraćamo layer rekurzivno
     }
 
-    void UpdateDraggedLayer()
+    // Nova metoda koja rekurzivno postavlja layer za objekat i svu njegovu decu
+    private void SetLayerRecursively(GameObject obj, int newLayer)
     {
-        if (is_dragging)
+        if (obj == null) return;
+        
+        obj.layer = newLayer;
+        
+        foreach (Transform child in obj.transform)
         {
-            draggedObject.GetComponent<CompositeCollider2D>().enabled = false;
+            SetLayerRecursively(child.gameObject, newLayer);
         }
     }
 }
