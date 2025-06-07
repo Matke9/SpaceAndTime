@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 8990451726317365140}
   - component: {fileID: 8980244399271181152}
   m_Layer: 6
-  m_Name: Enemy
+  m_Name: EnemyCandle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
