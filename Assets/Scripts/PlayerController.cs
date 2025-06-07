@@ -6,6 +6,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool wasdMovement;
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody2D;
+    private int lastInput = 1;
+    
+    public int GetLastInput()
+    {
+        return lastInput;
+    }
     
     private void Start()
     {
@@ -52,8 +58,24 @@ public class PlayerController : MonoBehaviour
         {
             moveLeftRight = 1;
         }
-
-        playerRigidbody2D.linearVelocity = new Vector2(moveLeftRight * moveSpeed, moveUpDown * moveSpeed);
         
+        playerRigidbody2D.linearVelocity = new Vector2(moveLeftRight * moveSpeed, moveUpDown * moveSpeed);
+        if (pressedUp)
+        {
+            lastInput = 1;
+        }
+        else if (pressedDown)
+        {
+            lastInput = 2;
+        }
+        else if (pressedLeft)
+        {
+            lastInput = 3;
+        }
+        else if (pressedRight)
+        {
+            lastInput = 4;
+        }
+
     }
 }
