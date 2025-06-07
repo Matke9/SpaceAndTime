@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9928f179d89ffe843aa5dde7afe084f1
+guid: 6adca458881d25f48a7e55003192b405
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -5755890261792335035
-    second: WallTexture_0
+      213: 7133065957058705883
+    second: RukaRealTimer_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 800
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: WallTexture_0
+      name: RukaRealTimer_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
-        width: 3000
-        height: 2000
+        y: 1018
+        width: 2849
+        height: 1459
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +154,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 54bdcbb8d48fe10b0800000000000000
-      internalID: -5755890261792335035
+      spriteID: bd97ae102bdbdf260800000000000000
+      internalID: 7133065957058705883
       vertices: []
       indices: 
       edges: []
@@ -174,7 +174,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      WallTexture_0: -5755890261792335035
+      RukaRealTimer_0: 7133065957058705883
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

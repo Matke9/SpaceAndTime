@@ -7,7 +7,6 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private Transform fireballHolder;
     private GameObject[] fireballs;
     private PlayerController playerController;
-    private int lastInput = 1;
 
     //private Animator anim;
     private PlayerController playerMovement;
@@ -18,7 +17,6 @@ public class PlayerAttack : MonoBehaviour
         playerMovement = GetComponent<PlayerController>();
         fireballs = new GameObject[fireballHolder.childCount];
         playerController = FindFirstObjectByType<PlayerController>();
-        lastInput = playerController.GetLastInput();
         for (int i = 0; i < fireballHolder.childCount; i++)
         {
             fireballs[i] = fireballHolder.GetChild(i).gameObject;
@@ -37,27 +35,11 @@ public class PlayerAttack : MonoBehaviour
     {
         //anim.SetTrigger("attack");
         cooldownTimer = 0;
-        lastInput = playerController.GetLastInput();
-        if (lastInput == 1)
-        {
-            fireballs[FindFireball()].transform.position = new Vector3(firePoint.position.x, firePoint.position.y + 0.5f, firePoint.position.z);
-        }
-        else if (lastInput == 2)
-        {
-            fireballs[FindFireball()].transform.position = new Vector3(firePoint.position.x, firePoint.position.y - 0.5f, firePoint.position.z);
-        }
-        else if (lastInput == 3)
-        {
-            fireballs[FindFireball()].transform.position = new Vector3(firePoint.position.x - 0.5f, firePoint.position.y, firePoint.position.z);
-        }
-        else if (lastInput == 4)
-        {
-            fireballs[FindFireball()].transform.position = new Vector3(firePoint.position.x + 0.5f, firePoint.position.y, firePoint.position.z);
-        }
+        fireballs[FindFireball()].transform.position = new Vector3(firePoint.position.x, firePoint.position.y, firePoint.position.z);
         
 
 
-        fireballs[FindFireball()].GetComponent<Projectile>().SetDirection(lastInput);
+        fireballs[FindFireball()].GetComponent<Projectile>().SetDirection();;
     }
     private int FindFireball()
     {

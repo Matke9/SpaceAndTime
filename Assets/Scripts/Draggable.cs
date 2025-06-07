@@ -6,6 +6,10 @@ public class Draggable : MonoBehaviour
 {
     //bool beingDragged = false;
     public Collider2D wallCollider;
+    [SerializeField] private GameObject leftBrim;
+    [SerializeField] private GameObject topBrim;
+    [SerializeField] private GameObject rightBrim;
+    [SerializeField] private GameObject bottomBrim;
     DragDropSystem dragDropSystem;
 
     private void Start()
@@ -17,11 +21,12 @@ public class Draggable : MonoBehaviour
         Vector2Int gridPos = new Vector2Int(cellPos.x, cellPos.y);
         dragDropSystem.draggableObjects.Add(gridPos, gameObject);
         Vector3 startPos = dragDropSystem.grid.CellToWorld(new Vector3Int(cellPos.x,cellPos.y,0));
-        startPos.x += 0.5f;
-        startPos.y += 0.5f;
+        startPos.x += 1f;
+        startPos.y += 1f;
         startPos.z = 0;
         transform.position = startPos;
     }
+    
     
     
 }

@@ -104,6 +104,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;

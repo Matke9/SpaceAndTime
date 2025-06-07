@@ -8,7 +8,7 @@ public class DragDropSystem : MonoBehaviour
     [SerializeField] private float lerpSpeed = 15f;
     [SerializeField] private float rotationLerpSpeed = 5f;
     [SerializeField] private LayerMask collisionCheckMask; // Layeri koje proveravamo
-    [SerializeField] private Vector2 tileCheckSize = new Vector2(2f, 2f); // Veličina provere
+    [SerializeField] private Vector2 tileCheckSize = new Vector2(1.9f, 1.9f); // Veličina provere
     
     private GameObject draggedObject;
     public Dictionary<Vector2Int, GameObject> draggableObjects = new Dictionary<Vector2Int, GameObject>();
@@ -139,8 +139,8 @@ public class DragDropSystem : MonoBehaviour
     {
         Vector2Int cellPos = GetMouseCell();
         Vector3 newPos = grid.CellToWorld(new Vector3Int(cellPos.x, cellPos.y, 0));
-        newPos.x += 0.5f;
-        newPos.y += 0.5f;
+        newPos.x += 1f;
+        newPos.y += 1f;
         newPos.z = 0;
         return newPos;
     }
