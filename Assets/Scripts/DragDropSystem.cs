@@ -6,13 +6,16 @@ public class DragDropSystem : MonoBehaviour
 {
     [SerializeField] public Grid grid;
     [SerializeField] private float lerpSpeed = 15f;
+    [SerializeField] private float rotationLerpSpeed = 5f;
     [SerializeField] private LayerMask collisionCheckMask; // Layeri koje proveravamo
     [SerializeField] private Vector2 tileCheckSize = new Vector2(2f, 2f); // Veličina provere
     
     private GameObject draggedObject;
     public Dictionary<Vector2Int, GameObject> draggableObjects = new Dictionary<Vector2Int, GameObject>();
     private bool is_dragging = false;
+    private bool is_rotating = false;
     private Vector3 oldPosition;
+    Quaternion targetRotation;
     private bool canPlace = true; // Flag za proveru da li možemo postaviti objekat
 
     void Update()
@@ -38,13 +41,31 @@ public class DragDropSystem : MonoBehaviour
                 GetNewPositionMouse(), 
                 lerpSpeed * Time.deltaTime
             );
-
+            
             if (Input.GetMouseButtonDown(1))
             {
-                Vector3 rotation = draggedObject.transform.rotation.eulerAngles;
-                rotation.z -= 90;
-                draggedObject.transform.rotation = Quaternion.Euler(rotation);
+                Vector3 currentRotation = draggedObject.transform.rotation.eulerAngles;
+                targetRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, currentRotation.z - 90f);
+                is_rotating = true;
             }
+
+            // Rotacija samo kad je potrebna
+            if (is_rotating)
+            {
+                draggedObject.transform.rotation = Quaternion.RotateTowards(
+                    draggedObject.transform.rotation,
+                    targetRotation,
+                    rotationLerpSpeed * 360f * Time.deltaTime // Množimo sa 360 da dobijemo stepene po sekundi
+                );
+
+                // Provera da li smo blizu ciljne rotacije
+                if (Quaternion.Angle(draggedObject.transform.rotation, targetRotation) < 0.1f)
+                {
+                    draggedObject.transform.rotation = targetRotation; // Postavljamo tačno na cilj
+                    is_rotating = false;
+                }
+            }
+
         }
 
         if (Input.GetMouseButtonUp(0) && is_dragging)
@@ -71,6 +92,9 @@ public class DragDropSystem : MonoBehaviour
         oldPosition = draggedObject.transform.position;
         is_dragging = true;
         SetLayerRecursively(draggedObject, 8);
+        targetRotation = draggedObject.transform.rotation;
+        is_rotating = false;
+
     }
     
     private void StopDragging()
