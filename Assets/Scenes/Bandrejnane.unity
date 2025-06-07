@@ -775,6 +775,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grid: {fileID: 275964622}
+  lerpSpeed: 15
 --- !u!4 &780935880 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7062810442067392322, guid: 09a6310c75cc5d944a65e0738ef2ba27, type: 3}
@@ -1092,31 +1093,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6dd0fc1da3a4fe844baa61268b636aff, type: 3}
---- !u!1 &1866593148 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1246373823327510637, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-  m_PrefabInstance: {fileID: 5909006689442359568}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1866593152 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-  m_PrefabInstance: {fileID: 5909006689442359568}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1866593153
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1866593148}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c4c6fce05fadc341bda60d0db07cc63, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackCooldown: 0.8
-  firePoint: {fileID: 1866593152}
-  fireballHolder: {fileID: 128404410}
 --- !u!1001 &2886513728601203365
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1183,18 +1159,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.49999988
       objectReference: {fileID: 0}
@@ -1238,25 +1202,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 9069770344934975509, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_Color.b
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9069770344934975509, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 9069770344934975509, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
+    - target: {fileID: 3778925708511639550, guid: 211689821d6616d44800b9e3a31be949, type: 3}
+      propertyPath: fireballHolder
+      value: 
+      objectReference: {fileID: 128404410}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 1246373823327510637, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1866593153}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 211689821d6616d44800b9e3a31be949, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

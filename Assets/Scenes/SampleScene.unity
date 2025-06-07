@@ -537,7 +537,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 3
   m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
   m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
@@ -982,6 +982,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 554658032}
   lerpSpeed: 15
+  collisionCheckMask:
+    serializedVersion: 2
+    m_Bits: 72
+  tileCheckSize: {x: 2, y: 2}
 --- !u!4 &1535438955
 Transform:
   m_ObjectHideFlags: 0
@@ -1056,6 +1060,14 @@ PrefabInstance:
     - target: {fileID: 1246373823327510637, guid: 211689821d6616d44800b9e3a31be949, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 1246373823327510637, guid: 211689821d6616d44800b9e3a31be949, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7621830954914974969, guid: 211689821d6616d44800b9e3a31be949, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7678732260833466235, guid: 211689821d6616d44800b9e3a31be949, type: 3}
       propertyPath: moveSpeed
