@@ -92,7 +92,9 @@ public class DragDropSystem : MonoBehaviour
 
     private void StartDragging(GameObject draggedObject)
     {
-        UpdateOuterBrims();
+        Vector2Int oldPos = (Vector2Int)grid.WorldToCell(draggedObject.transform.position);
+        draggableObjects.Remove(oldPos);
+        UpdateTileAndNeighbors(oldPos);
         oldPosition = draggedObject.transform.position;
         is_dragging = true;
         SetLayerRecursively(draggedObject, 8);
@@ -109,10 +111,11 @@ public class DragDropSystem : MonoBehaviour
         if (!canPlace || draggableObjects.ContainsKey(newCell))
         {
             draggedObject.transform.position = oldPosition;
+            draggableObjects.Add(oldPos, draggedObject);
+            UpdateTileAndNeighbors(oldPos);
         }
         else
         {
-            draggableObjects.Remove(oldPos);
             UpdateTileAndNeighbors(oldPos);
             draggedObject.transform.position = GetNewPositionInt();
             draggableObjects.Add(newCell, draggedObject);

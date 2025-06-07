@@ -3,6 +3,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     [SerializeField] private Transform player;
+    [SerializeField] private float time_value = 5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float detectionRange = 10f;
     [SerializeField] private float stoppingDistance = 0.1f; // Distance at which enemy stops
@@ -106,6 +107,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
+        GameTimeManager.AddTime(time_value);
         Destroy(gameObject);
     }
 

@@ -13,6 +13,6 @@ public class WatchManager : MonoBehaviour
 
     void Update()
     {
-        circle.fillAmount = .75f - (GameTimeManager.gameTime / 100);
+        circle.fillAmount = .75f - (GameTimeManager.GetTime() / 100);
     }
 }
