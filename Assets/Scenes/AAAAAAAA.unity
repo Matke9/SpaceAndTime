@@ -1044,6 +1044,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   grid: {fileID: 554658032}
   lerpSpeed: 15
+  rotationLerpSpeed: 5
   collisionCheckMask:
     serializedVersion: 2
     m_Bits: 72
@@ -1071,14 +1072,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.25
-      objectReference: {fileID: 0}
     - target: {fileID: 1139474255413560626, guid: 211689821d6616d44800b9e3a31be949, type: 3}
       propertyPath: m_LocalPosition.x
       value: -8.83
@@ -1123,30 +1116,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 1246373823327510637, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 3778925708511639550, guid: 211689821d6616d44800b9e3a31be949, type: 3}
       propertyPath: fireballHolder
       value: 
       objectReference: {fileID: 926346041}
-    - target: {fileID: 7621830954914974969, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_Layer
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678732260833466235, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: moveSpeed
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7678732260833466235, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: wasdMovement
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9069770344934975509, guid: 211689821d6616d44800b9e3a31be949, type: 3}
-      propertyPath: m_SortingOrder
-      value: 2
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
