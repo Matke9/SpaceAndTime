@@ -16,7 +16,7 @@ public class Enemy : MonoBehaviour
     private bool hasReachedLastPosition;
     private Rigidbody2D rb;
     private float sideWoddle = 2f;
-    private float currentWoddle = 0f;
+    private float currentWoddle;
     private float yRotation = 0f;
 
     private void Start()
