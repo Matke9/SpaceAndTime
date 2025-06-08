@@ -39,8 +39,14 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(GameManager.pausedGame == false)
+        if (GameManager.pausedGame == true)
+        {
+            rb.linearVelocity = new Vector2(0, 0);
+        }
+        else
+        {
             MoveEnemy();
+        }
     }
 
     private void CheckPlayerVisibility()
