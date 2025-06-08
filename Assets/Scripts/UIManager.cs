@@ -31,12 +31,12 @@ public class UIManager : MonoBehaviour
     {
         audioSrc.Play();
         pauseMenu.GetComponent<Image>().enabled = true;
+        leftCursor.GetComponent<Image>().enabled = true;
         is_animating = true;
         animationTimer = 0;
         GameManager.pausedGame = true;
         pauseMenu.SetTrigger("Pause");
         cursor.SetTrigger("Pause");
-        //leftCursor.SetTrigger("Pause");
         leftHand.SetTrigger("Pause");
     }
 

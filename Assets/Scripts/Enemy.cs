@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float detectionRange = 10f;
     [SerializeField] private float attackRange = 0.3f;
-    [SerializeField] private float stoppingDistance = 1f;
+    //[SerializeField] private float stoppingDistance = 1f;
     [SerializeField] private LayerMask obstacleLayer;
 
     private Vector3 lastKnownPlayerPosition;
@@ -119,7 +119,7 @@ public class Enemy : MonoBehaviour
             attackTimer = 0f;
         }
 
-        if (isMovingToLastPosition && distanceToTarget < stoppingDistance)
+        if (isMovingToLastPosition && distanceToTarget < attackRange)
         {
             rb.linearVelocity = Vector2.zero;
             hasReachedLastPosition = true;
