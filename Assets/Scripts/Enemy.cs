@@ -11,9 +11,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private LayerMask obstacleLayer;
 
     private Vector3 lastKnownPlayerPosition;
-    private bool canSeePlayer;
+    public bool canSeePlayer;
     private bool isMovingToLastPosition;
-    private bool hasReachedLastPosition;
+    public bool hasReachedLastPosition;
     private Rigidbody2D rb;
     private float sideWoddle = 2f;
     private float currentWoddle;
@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
 
             if (attackTimer >= attackCooldown)
             {
-                GameTimeManager.AddTime(2);
+                GameTimeManager.ReduceTime(2);
                 attackTimer = 0f;
             }
 
