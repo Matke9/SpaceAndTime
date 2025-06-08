@@ -2,10 +2,15 @@ using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
+public enum TileType{
+    YELLOW, RED, BLUE, GREEN, PURPLE, ORANGE, BLACK, WHITE, GRAY, BROWN, PINK, BROWN_DARK, PINK_DARK, YELLOW_DARK, RED_DARK, BLUE_DARK, GREEN_DARK, PURPLE_DARK, ORANGE_DARK, BLACK_DARK, WHITE_DARK, GRAY_DARK
+}
+
 public class Draggable : MonoBehaviour
 {
     //bool beingDragged = false;
     public Collider2D wallCollider;
+    [SerializeField] public TileType tileType;
     [SerializeField] public GameObject outerBrim;
     DragDropSystem dragDropSystem;
 
