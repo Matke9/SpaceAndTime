@@ -1323,10 +1323,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96d5e5cdab08ab499276c1f792c25e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  cursor: {fileID: 0}
-  leftHand: {fileID: 0}
-  leftCursor: {fileID: 0}
+  pauseMenu: {fileID: 8593294985215109866}
+  cursor: {fileID: 8593294985215109865}
+  leftHand: {fileID: 8593294985215109864}
+  leftCursor: {fileID: 8593294985215109867}
   audioSrc: {fileID: 519420035}
 --- !u!114 &1535438958
 MonoBehaviour:
@@ -1932,6 +1932,26 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+--- !u!95 &8593294985215109864 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4737397074857068528, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 8593294985215109863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8593294985215109865 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7717487436068661791, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 8593294985215109863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8593294985215109866 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5309015564033746000, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 8593294985215109863}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &8593294985215109867 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8977477587509849406, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 8593294985215109863}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

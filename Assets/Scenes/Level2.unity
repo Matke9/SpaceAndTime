@@ -570,6 +570,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+--- !u!224 &296401976 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 8977477587509849406, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 232889094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &310585226 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2277834101440791583, guid: 6481b3294eba3d54681ff400e083eec2, type: 3}
@@ -693,6 +698,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e90747a95b338aa43b8d47ca10287d99, type: 3}
+--- !u!95 &500979657 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7717487436068661791, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 232889094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &504123340
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2075,10 +2085,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e96d5e5cdab08ab499276c1f792c25e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
-  cursor: {fileID: 0}
-  leftHand: {fileID: 0}
-  leftCursor: {fileID: 0}
+  pauseMenu: {fileID: 1983386040}
+  cursor: {fileID: 500979657}
+  leftHand: {fileID: 1710904835}
+  leftCursor: {fileID: 296401976}
   audioSrc: {fileID: 519420035}
 --- !u!114 &1535438958
 MonoBehaviour:
@@ -2149,6 +2159,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f2477827445f6ae4e9933abe98bd2435, type: 3}
+--- !u!95 &1710904835 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4737397074857068528, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 232889094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1838495005
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2307,6 +2322,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 211689821d6616d44800b9e3a31be949, type: 3}
+--- !u!95 &1983386040 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5309015564033746000, guid: 85a65d4dc78fe5144915c527e2d23968, type: 3}
+  m_PrefabInstance: {fileID: 232889094}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2001471373
 PrefabInstance:
   m_ObjectHideFlags: 0
