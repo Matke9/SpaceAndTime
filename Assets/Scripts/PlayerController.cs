@@ -127,4 +127,14 @@ public class PlayerController : MonoBehaviour
     {
         key++;
     }
+    public bool useKey()
+    {
+        if (key > 0)
+        {
+            key--;
+            return true;
+        }
+
+        return false;
+    }
 }
