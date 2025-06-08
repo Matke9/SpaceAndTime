@@ -1,10 +1,28 @@
 fileFormatVersion: 2
-guid: 821cd97a99393334b96661e5ec321f10
+guid: 3ab0034962573384fb18944d0fee1eb8
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1694913177206695654
-    second: Key_0
+      213: -3623770509516212508
+    second: Dioda3_0
+  - first:
+      213: 8978638995992013770
+    second: Dioda3_1
+  - first:
+      213: 1549974659590590851
+    second: Dioda3_2
+  - first:
+      213: -8223143513144623937
+    second: Dioda3_3
+  - first:
+      213: 4205680281963913874
+    second: Dioda3_4
+  - first:
+      213: 6459804333043382778
+    second: Dioda3_5
+  - first:
+      213: -7609722161638076701
+    second: Dioda3_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +69,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 300
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +157,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Key_0
+      name: Dioda3_3
       rect:
         serializedVersion: 2
-        x: 53
-        y: 23
-        width: 63
-        height: 141
+        x: 410
+        y: 504
+        width: 160
+        height: 312
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -154,8 +172,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6e6a88cfd8a858710800000000000000
-      internalID: 1694913177206695654
+      spriteID: fbcf4f9fa8681ed80800000000000000
+      internalID: -8223143513144623937
       vertices: []
       indices: 
       edges: []
@@ -164,7 +182,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: f5e883ddf86fce048b6b9ec3efaca6a2
+    spriteID: 1d88118a5bdb01a48bfe20a921ed92c5
     internalID: 0
     vertices: []
     indices: 
@@ -174,7 +192,13 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Key_0: 1694913177206695654
+      Dioda3_0: -3623770509516212508
+      Dioda3_1: 8978638995992013770
+      Dioda3_2: 1549974659590590851
+      Dioda3_3: -8223143513144623937
+      Dioda3_4: 4205680281963913874
+      Dioda3_5: 6459804333043382778
+      Dioda3_6: -7609722161638076701
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
