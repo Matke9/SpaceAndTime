@@ -1810,7 +1810,6 @@ MonoBehaviour:
   moveSpeed: 1.5
   detectionRange: 10
   attackRange: 0.3
-  stoppingDistance: 0.1
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 128
@@ -2044,23 +2043,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d001e98790061b64e8a55d0c583ed18c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &1609571009 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3410373395046984700, guid: 33791cfe8df74c94b9ed78c87165b7af, type: 3}
-  m_PrefabInstance: {fileID: 330063298102448718}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1609571014
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1609571009}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c92771aabbeb4e94cbaf640c4d3ec3c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &1868394516 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4274720647388852252, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
@@ -2199,6 +2181,10 @@ PrefabInstance:
       propertyPath: fireballHolder
       value: 
       objectReference: {fileID: 310585226}
+    - target: {fileID: 7678732260833466235, guid: 211689821d6616d44800b9e3a31be949, type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 1499701761984015230, guid: 10ac2dd9f28fdac4f856c3bb64a23a9d, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2476,10 +2462,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 3410373395046984700, guid: 33791cfe8df74c94b9ed78c87165b7af, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1609571014}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33791cfe8df74c94b9ed78c87165b7af, type: 3}
 --- !u!1001 &949502973101105800
 PrefabInstance:
