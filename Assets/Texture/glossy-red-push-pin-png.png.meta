@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      glossy-red-push-pin-png_0: -9146616262132583547
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

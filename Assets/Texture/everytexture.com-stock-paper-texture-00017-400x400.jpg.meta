@@ -134,7 +134,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      everytexture.com-stock-paper-texture-00017-400x400_0: 570914954815449463
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
