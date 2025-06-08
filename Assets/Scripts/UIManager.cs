@@ -8,6 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Animator cursor;
     [SerializeField] Animator leftHand;
     [SerializeField] Transform leftCursor;
+    [SerializeField] AudioSource audioSrc;
     bool is_animating = false;
     private float animationTimer = 1;
     void Update()
@@ -28,6 +29,7 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
+        audioSrc.Play();
         pauseMenu.GetComponent<Image>().enabled = true;
         is_animating = true;
         animationTimer = 0;
@@ -40,6 +42,7 @@ public class UIManager : MonoBehaviour
 
     public void Resume()
     {
+        audioSrc.Play();
         is_animating = true;
         animationTimer = 0;
         GameManager.pausedGame = false;
