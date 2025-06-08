@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class DiodeParticleSystem : MonoBehaviour
 {
-    [SerializeField] ParticleSystem particleSystem;
+    [SerializeField] ParticleSystem particles;
     private Enemy enemy;
     private bool played;
     void Start()
     {
-        particleSystem.Stop();
+        particles.Stop();
         enemy = GetComponent<Enemy>();
     }
 
@@ -17,17 +17,14 @@ public class DiodeParticleSystem : MonoBehaviour
         {
             if (!played)
             {
-
-
                 played = true;
-                particleSystem.Play();
-                Debug.Log("played");
+                particles.Play();
             }
         }
         else
         {
             played=false;
-            particleSystem.Stop();
+            particles.Stop();
         }
     }
 }
