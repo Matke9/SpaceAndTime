@@ -4966,7 +4966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0adce43100d92d2458930b17d4180177, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  particleSystem: {fileID: 4489197003982222999}
+  particles: {fileID: 4489197003982222999}
 --- !u!4 &8313679935853645595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2555692908972486365, guid: e4812b238a0544845b4db2e55a70a295, type: 3}
