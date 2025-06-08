@@ -399,7 +399,7 @@ MonoBehaviour:
   stage: 0
   finished: 1
   destination: {fileID: 1868394516}
-  audio: {fileID: 980143184}
+  audioSource: {fileID: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,7 +781,7 @@ MonoBehaviour:
   stage: 0
   finished: 0
   destination: {fileID: 169292138}
-  audio: {fileID: 1038435420}
+  audioSource: {fileID: 0}
 --- !u!95 &626976048
 Animator:
   serializedVersion: 7
@@ -1127,11 +1127,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3490973833117371149, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
   m_PrefabInstance: {fileID: 1906005951}
   m_PrefabAsset: {fileID: 0}
---- !u!82 &980143184 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 465392037992523355, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
-  m_PrefabInstance: {fileID: 1906005951}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1020261254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1226,11 +1221,6 @@ BoxCollider2D:
 --- !u!4 &1038435416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3490973833117371149, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
-  m_PrefabInstance: {fileID: 846068360}
-  m_PrefabAsset: {fileID: 0}
---- !u!82 &1038435420 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 465392037992523355, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
   m_PrefabInstance: {fileID: 846068360}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1047191157
@@ -1749,6 +1739,7 @@ MonoBehaviour:
   time_value: 5
   moveSpeed: 1.5
   detectionRange: 10
+  attackRange: 0.3
   stoppingDistance: 0.1
   obstacleLayer:
     serializedVersion: 2
@@ -2128,6 +2119,10 @@ PrefabInstance:
       propertyPath: moveSpeed
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 7678732260833466235, guid: 211689821d6616d44800b9e3a31be949, type: 3}
+      propertyPath: deathSprite
+      value: 
+      objectReference: {fileID: 3758997430563505317, guid: e3711240b487a434ca61a24fb043c4e5, type: 3}
     - target: {fileID: 7678732260833466235, guid: 211689821d6616d44800b9e3a31be949, type: 3}
       propertyPath: wasdMovement
       value: 1
