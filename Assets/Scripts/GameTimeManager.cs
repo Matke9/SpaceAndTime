@@ -7,6 +7,7 @@ public class GameTimeManager : MonoBehaviour
     
     void Update()
     {
+        if(GameManager.pausedGame == false)
            gameTime -= Time.deltaTime;
     }
 
