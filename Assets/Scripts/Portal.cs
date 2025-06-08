@@ -6,7 +6,7 @@ public class Portal : MonoBehaviour
     [SerializeField] private int stage;
     [SerializeField] public bool finished;
     [SerializeField] private Transform destination;
-    [SerializeField] private AudioSource audio;
+    [SerializeField] private AudioSource audioSource;
     private SpriteRenderer spriteRenderer;
     private Animator animator;
     private Transform player;
@@ -45,7 +45,7 @@ public class Portal : MonoBehaviour
     }
     public void teleport()
     {
-        audio.Play();
+        audioSource.Play();
         player.position = destination.position;
     }
 }
