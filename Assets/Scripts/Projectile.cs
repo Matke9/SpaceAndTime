@@ -8,6 +8,7 @@ public class Projectile : MonoBehaviour
     private bool hit;
     private float lifetime;
     private Rigidbody2D rb;
+    private Vector2 currentDirection;
 
     //private Animator anim;
     private CircleCollider2D boxCollider;
@@ -20,10 +21,18 @@ public class Projectile : MonoBehaviour
     }
     private void Update()
     {
-        if (hit || GameManager.pausedGame) return;
-        
-        lifetime += Time.deltaTime;
-        if (lifetime > 5) gameObject.SetActive(false);
+        if (hit) return;
+        if (GameManager.pausedGame == true)
+        {
+            rb.linearVelocity = new Vector2(0, 0);
+        }
+        else
+        {
+            rb.linearVelocity = currentDirection;
+            lifetime += Time.deltaTime;
+            if (lifetime > 5) gameObject.SetActive(false);
+        }
+
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -51,7 +60,7 @@ public class Projectile : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angle);
         dirrection.z = 0;
         dirrection.Normalize();;
-        
+        currentDirection = dirrection * speed;
         rb.linearVelocity = dirrection * speed;
     }
     private void Deactivate()
