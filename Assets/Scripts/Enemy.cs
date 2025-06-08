@@ -108,7 +108,7 @@ public class Enemy : MonoBehaviour
 
             if (attackTimer >= attackCooldown)
             {
-                GameTimeManager.ReduceTime(2);
+                GameTimeManager.AddTime(2);
                 attackTimer = 0f;
             }
 
@@ -152,11 +152,4 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-            GameTimeManager.AddTime(time_value);
-        }
-    }
 }
