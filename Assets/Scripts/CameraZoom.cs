@@ -14,6 +14,7 @@ public class CameraZoom : MonoBehaviour
 
     private void Start()
     {
+        Cursor.visible = false;
         zoom = cam.orthographicSize;
     }
 

@@ -22,7 +22,7 @@ public class DragDropSystem : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && !GameManager.pausedGame)
         {
-            if (draggableObjects.TryGetValue(GetMouseCell(), out draggedObject))
+            if (draggableObjects.TryGetValue(GetMouseCell(), out draggedObject) && draggedObject.GetComponent<Draggable>().tileType == 0)
             {
                 // Proveravamo kolizije tokom prevlačenja
                 Vector3 targetPos = GetNewPositionInt();

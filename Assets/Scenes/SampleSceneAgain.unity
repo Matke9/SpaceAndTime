@@ -399,6 +399,7 @@ MonoBehaviour:
   stage: 0
   finished: 1
   destination: {fileID: 1868394516}
+  audio: {fileID: 980143184}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +781,7 @@ MonoBehaviour:
   stage: 0
   finished: 0
   destination: {fileID: 169292138}
+  audio: {fileID: 1038435420}
 --- !u!95 &626976048
 Animator:
   serializedVersion: 7
@@ -1125,6 +1127,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3490973833117371149, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
   m_PrefabInstance: {fileID: 1906005951}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &980143184 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 465392037992523355, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
+  m_PrefabInstance: {fileID: 1906005951}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1020261254
 GameObject:
   m_ObjectHideFlags: 0
@@ -1219,6 +1226,11 @@ BoxCollider2D:
 --- !u!4 &1038435416 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3490973833117371149, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
+  m_PrefabInstance: {fileID: 846068360}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &1038435420 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 465392037992523355, guid: fa17a55ef3729ec49ba77bc230b8ba64, type: 3}
   m_PrefabInstance: {fileID: 846068360}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1047191157
