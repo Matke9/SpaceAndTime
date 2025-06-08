@@ -1414,6 +1414,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: EnemyDioda Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 4489197003982222999, guid: f2477827445f6ae4e9933abe98bd2435, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489197003982222999, guid: f2477827445f6ae4e9933abe98bd2435, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4489197003982222999, guid: f2477827445f6ae4e9933abe98bd2435, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6271875616268934713, guid: f2477827445f6ae4e9933abe98bd2435, type: 3}
+      propertyPath: m_SortingOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
