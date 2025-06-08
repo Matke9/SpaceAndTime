@@ -5,15 +5,14 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] Animator pauseMenu;
     [SerializeField] Animator cursor;
-    bool paused = false;
     bool animating = false;
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape) && !animating)
         {
-            paused = !paused;
+            GameManager.pausedGame = !GameManager.pausedGame;
             animating = true;
-            if (paused)
+            if (GameManager.pausedGame)
             {
                 pauseMenu.SetTrigger("Pause");
                 cursor.SetTrigger("Pause");
@@ -23,7 +22,7 @@ public class UIManager : MonoBehaviour
                 pauseMenu.SetTrigger("Unpause");
                 cursor.SetTrigger("Unpause");
             }
-            //StartCoroutine(StopAnimating());
+            StartCoroutine(StopAnimating());
         }
     }
 
