@@ -5,6 +5,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float attackCooldown;
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform fireballHolder;
+    [SerializeField] private AudioSource shootSound;
     private GameObject[] fireballs;
     private PlayerController playerController;
 
@@ -33,6 +34,7 @@ public class PlayerAttack : MonoBehaviour
 
     private void Attack()
     {
+        shootSound.Play();
         //anim.SetTrigger("attack");
         if (GameTimeManager.ReduceTime(5) && GameManager.pausedGame == false)
         {
