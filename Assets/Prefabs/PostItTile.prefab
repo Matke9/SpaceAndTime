@@ -486,6 +486,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   wallCollider: {fileID: 0}
+  tileType: 0
   outerBrim: {fileID: 4180317778553007932}
 --- !u!50 &2881330846968894122
 Rigidbody2D:

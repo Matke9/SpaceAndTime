@@ -63,7 +63,7 @@ public class Projectile : MonoBehaviour
         currentDirection = dirrection * speed;
         rb.linearVelocity = dirrection * speed;
     }
-    private void Deactivate()
+    public void Deactivate()
     {
         gameObject.SetActive(false);
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6099362765152774088}
   - component: {fileID: 3627563316938738397}
   - component: {fileID: 1427480237744356548}
+  - component: {fileID: 642242579914128388}
   m_Layer: 7
   m_Name: trigger
   m_TagString: Untagged
@@ -125,6 +126,18 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 2, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &642242579914128388
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3309975113629788092}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f01cc0e751497504abb0e12fdc7a06a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &285674006368653525
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -171,7 +184,7 @@ PrefabInstance:
       objectReference: {fileID: -3667893305458383475, guid: 8a7c7d7c7ef1ab54489bcc7ecebba544, type: 3}
     - target: {fileID: 4682518758698454566, guid: 71a58dcc965fc5a488b7d9f0fb30211c, type: 3}
       propertyPath: m_Name
-      value: PostItTileLine
+      value: PostItTileLineGreen
       objectReference: {fileID: 0}
     - target: {fileID: 7306637050709514153, guid: 71a58dcc965fc5a488b7d9f0fb30211c, type: 3}
       propertyPath: m_LocalPosition.x
