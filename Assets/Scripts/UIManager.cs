@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
         {
             if (!GameManager.pausedGame)
             {
-                Pause();
+                Pause();                                                            
             }
             else
             {

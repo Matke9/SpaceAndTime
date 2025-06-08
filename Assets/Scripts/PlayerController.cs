@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float sideWoddle = 0.5f;
     private float currentWoddle = 0f;
     private float yRotation = 0f;
+    private int key = 0;
     
     public int GetLastInput()
     {
@@ -120,5 +121,10 @@ public class PlayerController : MonoBehaviour
     {
         spriteRenderer.sprite = deathSprite;
         death = true;
+    }
+    
+    public void pickUpKey()
+    {
+        key++;
     }
 }
