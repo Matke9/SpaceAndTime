@@ -20,8 +20,8 @@ public class Projectile : MonoBehaviour
     }
     private void Update()
     {
-        if (hit) return;
-
+        if (hit || GameManager.pausedGame) return;
+        
         lifetime += Time.deltaTime;
         if (lifetime > 5) gameObject.SetActive(false);
     }
