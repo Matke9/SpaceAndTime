@@ -21,7 +21,7 @@ public class Door : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null && playerController.useKey())
         {
-            playerController.Die();
+            GameTimeManager.ReduceTime(1000);
             Debug.Log("CRAZYYY");
         }
     }
