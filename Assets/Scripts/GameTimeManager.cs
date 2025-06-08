@@ -3,8 +3,13 @@ using UnityEngine.Events;
 
 public class GameTimeManager : MonoBehaviour
 {
-    private static float gameTime = 75f; 
+    private static float gameTime = 75f;
+    private static PlayerController playerController;
     
+    void Start()
+    {
+        playerController = FindFirstObjectByType<PlayerController>();
+    }
     void Update()
     {
         if(GameManager.pausedGame == false)
@@ -37,8 +42,8 @@ public class GameTimeManager : MonoBehaviour
         }
         else
         {
+            playerController.Die();
             GameManager.GameOver();
-            Debug.Log("Died"); 
             gameTime = 0;
             return false;
         }

@@ -4,6 +4,9 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private bool wasdMovement;
+    [SerializeField] private Sprite deathSprite;
+    private SpriteRenderer spriteRenderer;
+    private bool death = false;
     private Transform playerTransform;
     private Rigidbody2D playerRigidbody2D;
     private int lastInput = 1;
@@ -18,13 +21,14 @@ public class PlayerController : MonoBehaviour
     
     private void Start()
     {
+        spriteRenderer = transform.GetChild(0).GetComponent<SpriteRenderer>();
         playerTransform = GetComponent<Transform>();
         playerRigidbody2D = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
     {
-        if (GameManager.pausedGame == false)
+        if (GameManager.pausedGame == false && death == false)
         {
             bool pressedUp;
             bool pressedLeft;
@@ -111,6 +115,10 @@ public class PlayerController : MonoBehaviour
                 lastInput = 4;
             }
         }
-
+    }
+    public void Die()
+    {
+        spriteRenderer.sprite = deathSprite;
+        death = true;
     }
 }
