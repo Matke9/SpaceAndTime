@@ -120,6 +120,7 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         spriteRenderer.sprite = deathSprite;
+        GameTimeManager.ReduceTime(1000);
         death = true;
     }
     

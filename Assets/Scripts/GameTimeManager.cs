@@ -14,6 +14,12 @@ public class GameTimeManager : MonoBehaviour
     {
         if(GameManager.pausedGame == false)
            gameTime -= Time.deltaTime;
+        if (gameTime <= 0)
+        {
+            playerController.Die();
+            GameManager.GameOver();
+            gameTime = 0;
+        }
     }
 
     public static float GetTime()
