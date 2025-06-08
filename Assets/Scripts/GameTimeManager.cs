@@ -17,10 +17,13 @@ public class GameTimeManager : MonoBehaviour
     
     public static void AddTime(float time)
     {
-        gameTime += time;
-        if (gameTime >= 75)
+        if (GameManager.pausedGame == false)
         {
-            gameTime = 75;
+            gameTime += time;
+            if (gameTime >= 75)
+            {
+                gameTime = 75;
+            }
         }
     }
 

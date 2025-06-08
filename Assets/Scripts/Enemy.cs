@@ -39,7 +39,8 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        MoveEnemy();
+        if(GameManager.pausedGame == false)
+            MoveEnemy();
     }
 
     private void CheckPlayerVisibility()

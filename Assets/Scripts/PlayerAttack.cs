@@ -34,9 +34,9 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         //anim.SetTrigger("attack");
-        cooldownTimer = 0;
-        if (GameTimeManager.ReduceTime(5))
+        if (GameTimeManager.ReduceTime(5) && GameManager.pausedGame == false)
         {
+            cooldownTimer = 0;
             fireballs[FindFireball()].transform.position =
                 new Vector3(firePoint.position.x, firePoint.position.y, firePoint.position.z);
             fireballs[FindFireball()].GetComponent<Projectile>().SetDirection();
