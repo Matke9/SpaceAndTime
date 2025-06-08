@@ -121,6 +121,7 @@ public class PlayerController : MonoBehaviour
     {
         spriteRenderer.sprite = deathSprite;
         death = true;
+        playerRigidbody2D.linearVelocity = Vector2.zero;   
     }
     
     public void pickUpKey()

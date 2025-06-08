@@ -17,7 +17,7 @@ public class Green : MonoBehaviour
         {
             stage++;
             spriteRenderer.sprite = stages[stage];
-            return true;
+            return stage != stages.Length - 1;
         }
         return false;
     }

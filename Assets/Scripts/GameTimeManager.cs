@@ -8,6 +8,7 @@ public class GameTimeManager : MonoBehaviour
     
     void Start()
     {
+        gameTime = 75f;
         playerController = FindFirstObjectByType<PlayerController>();
     }
     void Update()
