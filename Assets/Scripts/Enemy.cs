@@ -9,11 +9,13 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float attackRange = 0.3f;
     //[SerializeField] private float stoppingDistance = 1f;
     [SerializeField] private LayerMask obstacleLayer;
+    
+    public bool isAttacking;
 
     private Vector3 lastKnownPlayerPosition;
-    public bool canSeePlayer;
+    private bool canSeePlayer;
     private bool isMovingToLastPosition;
-    public bool hasReachedLastPosition;
+    private bool hasReachedLastPosition;
     private Rigidbody2D rb;
     private float sideWoddle = 2f;
     private float currentWoddle;
@@ -102,6 +104,7 @@ public class Enemy : MonoBehaviour
 
         if (canSeePlayer && distanceToTarget <= attackRange)
         {
+            isAttacking = true;
             rb.linearVelocity = Vector2.zero;
 
             attackTimer += Time.fixedDeltaTime;
@@ -111,11 +114,11 @@ public class Enemy : MonoBehaviour
                 GameTimeManager.ReduceTime(2);
                 attackTimer = 0f;
             }
-
             return;
         }
         else
         {
+            isAttacking = false;
             attackTimer = 0f;
         }
 
