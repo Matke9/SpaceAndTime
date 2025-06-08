@@ -78,7 +78,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 2
   wasdMovement: 1
-  deathSprite: {fileID: 3758997430563505317, guid: e3711240b487a434ca61a24fb043c4e5, type: 3}
+  deathSprite: {fileID: 1499701761984015230, guid: 10ac2dd9f28fdac4f856c3bb64a23a9d, type: 3}
 --- !u!61 &4668611520156478072
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -160,7 +160,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 38
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
