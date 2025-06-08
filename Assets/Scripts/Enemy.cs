@@ -6,9 +6,9 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float time_value = 5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float detectionRange = 10f;
-    [SerializeField] private float stoppingDistance = 0.1f; // Distance at which enemy stops
+    [SerializeField] private float attackRange = 0.3f;
+    [SerializeField] private float stoppingDistance = 1f;
     [SerializeField] private LayerMask obstacleLayer;
-    
 
     private Vector3 lastKnownPlayerPosition;
     private bool canSeePlayer;
@@ -17,6 +17,8 @@ public class Enemy : MonoBehaviour
     private Rigidbody2D rb;
     private float sideWoddle = 2f;
     private float currentWoddle;
+    private float attackTimer = 0f;
+    private float attackCooldown = 2f;
 
     private void Start()
     {
@@ -33,19 +35,17 @@ public class Enemy : MonoBehaviour
     {
         if (player == null) return;
         CheckPlayerVisibility();
-
     }
 
     private void FixedUpdate()
     {
-        if (GameManager.pausedGame == true)
+        if (GameManager.pausedGame)
         {
-            rb.linearVelocity = new Vector2(0, 0);
+            rb.linearVelocity = Vector2.zero;
+            return;
         }
-        else
-        {
-            MoveEnemy();
-        }
+
+        MoveEnemy();
     }
 
     private void CheckPlayerVisibility()
@@ -91,7 +91,7 @@ public class Enemy : MonoBehaviour
     {
         if (hasReachedLastPosition && !canSeePlayer)
         {
-            transform.rotation = Quaternion.Euler(0,0,0);;
+            transform.rotation = Quaternion.Euler(0, 0, 0);
             rb.linearVelocity = Vector2.zero;
             return;
         }
@@ -99,6 +99,25 @@ public class Enemy : MonoBehaviour
         Vector2 targetPosition = canSeePlayer ? player.position : lastKnownPlayerPosition;
         Vector2 direction = (targetPosition - rb.position).normalized;
         float distanceToTarget = Vector2.Distance(rb.position, targetPosition);
+
+        if (canSeePlayer && distanceToTarget <= attackRange)
+        {
+            rb.linearVelocity = Vector2.zero;
+
+            attackTimer += Time.fixedDeltaTime;
+
+            if (attackTimer >= attackCooldown)
+            {
+                GameTimeManager.ReduceTime(2);
+                attackTimer = 0f;
+            }
+
+            return;
+        }
+        else
+        {
+            attackTimer = 0f;
+        }
 
         if (isMovingToLastPosition && distanceToTarget < stoppingDistance)
         {
@@ -110,32 +129,21 @@ public class Enemy : MonoBehaviour
 
         rb.linearVelocity = direction * moveSpeed;
 
-        // Okretanje sprite-a
+        // Flip sprite
         if (direction.x != 0)
         {
-            transform.localScale = new Vector3(-(Mathf.Sign(direction.x)*0.67f), 0.67f, 1);
+            transform.localScale = new Vector3(-(Mathf.Sign(direction.x) * 0.67f), 0.67f, 1);
         }
-        /*
-        if (direction.x < 0)
-        {
-            Debug.Log("Levo");
-            yRotation = 0;
-        }
-        else if (direction.x > 0)
-        {
-            Debug.Log("Desno");
-            yRotation = 180;
-        }
-        */
-        currentWoddle += sideWoddle;;
+
+        currentWoddle += sideWoddle;
 
         if (Mathf.Abs(currentWoddle) > 10f)
         {
-
             sideWoddle *= -1;
             currentWoddle = Mathf.Sign(currentWoddle) * 10f;
         }
-        transform.rotation = Quaternion.Euler(0,0,currentWoddle);;
+
+        transform.rotation = Quaternion.Euler(0, 0, currentWoddle);
     }
 
     public void Die()
@@ -144,12 +152,6 @@ public class Enemy : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionRange);
-    }
-    
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
