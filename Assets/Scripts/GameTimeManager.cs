@@ -12,7 +12,7 @@ public class GameTimeManager : MonoBehaviour
     }
     void Update()
     {
-        if(GameManager.pausedGame == false)
+        if(GameManager.pausedGame == false && gameTime > 0)
            gameTime -= Time.deltaTime;
         if (gameTime <= 0)
         {
