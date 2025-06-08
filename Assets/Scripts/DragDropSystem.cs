@@ -20,7 +20,7 @@ public class DragDropSystem : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameManager.pausedGame)
         {
             if (draggableObjects.TryGetValue(GetMouseCell(), out draggedObject))
             {
