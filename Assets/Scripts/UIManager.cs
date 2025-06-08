@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Animator leftHand;
     [SerializeField] Transform leftCursor;
     bool is_animating = false;
-    private float animationTimer = 0;
+    private float animationTimer = 1;
     void Update()
     {
         AnimationTimer();
@@ -27,6 +28,7 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
+        pauseMenu.GetComponent<Image>().enabled = true;
         is_animating = true;
         animationTimer = 0;
         GameManager.pausedGame = true;
