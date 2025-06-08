@@ -5,30 +5,60 @@ public class UIManager : MonoBehaviour
 {
     [SerializeField] Animator pauseMenu;
     [SerializeField] Animator cursor;
-    bool animating = false;
+    [SerializeField] Animator leftHand;
+    [SerializeField] Transform leftCursor;
+    bool is_animating = false;
+    private float animationTimer = 0;
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !animating)
+        AnimationTimer();
+        if (Input.GetKeyDown(KeyCode.Escape) && !is_animating)
         {
-            GameManager.pausedGame = !GameManager.pausedGame;
-            animating = true;
-            if (GameManager.pausedGame)
+            if (!GameManager.pausedGame)
             {
-                pauseMenu.SetTrigger("Pause");
-                cursor.SetTrigger("Pause");
+                Pause();
             }
             else
             {
-                pauseMenu.SetTrigger("Unpause");
-                cursor.SetTrigger("Unpause");
+                Resume();
             }
-            StartCoroutine(StopAnimating());
         }
     }
 
-    IEnumerator StopAnimating()
+    public void Pause()
     {
-        yield return new WaitForSeconds(1);
-        animating = false;
+        is_animating = true;
+        animationTimer = 0;
+        GameManager.pausedGame = true;
+        pauseMenu.SetTrigger("Pause");
+        cursor.SetTrigger("Pause");
+        //leftCursor.SetTrigger("Pause");
+        leftHand.SetTrigger("Pause");
+    }
+
+    public void Resume()
+    {
+        is_animating = true;
+        animationTimer = 0;
+        GameManager.pausedGame = false;
+        pauseMenu.SetTrigger("Unpause");
+        cursor.SetTrigger("Unpause");
+        leftHand.SetTrigger("Unpause");
+    }
+
+    void AnimationTimer()
+    {
+        if (is_animating)
+        {
+            animationTimer += Time.deltaTime;
+            if (!GameManager.pausedGame)
+            {
+                leftCursor.position = Vector3.Lerp(leftCursor.position, new Vector3(-500, 0, 0), animationTimer);
+            }
+            if (animationTimer > 1)
+            {
+                is_animating = false;
+            }
+        }
     }
 }
