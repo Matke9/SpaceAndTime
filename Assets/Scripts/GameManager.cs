@@ -17,19 +17,12 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (gameOver == true && Input.GetKeyDown(KeyCode.Space))
+        if (passed && Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-        }
-        else if (passed == true && Input.GetKeyDown(KeyCode.Space))
-        {
-            if (SceneManager.GetActiveScene().buildIndex + 1 < 2)
+            if (SceneManager.GetActiveScene().buildIndex < 2)
             {
+                Debug.Log("pinestse");
                 SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-            }
-            else
-            {
-                SceneManager.LoadScene(2);
             }
         }
     }

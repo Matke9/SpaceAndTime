@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -49,6 +50,21 @@ public class UIManager : MonoBehaviour
         pauseMenu.SetTrigger("Unpause");
         cursor.SetTrigger("Unpause");
         leftHand.SetTrigger("Unpause");
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
+    }
+    
+    public void Restart()
+    {
+        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex);
+    }
+
+    public void MainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
     }
 
     void AnimationTimer()
