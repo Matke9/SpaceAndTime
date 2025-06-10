@@ -30,10 +30,10 @@ public class UIManager : MonoBehaviour
 
     public void Pause()
     {
+        is_animating = true;
         audioSrc.Play();
         pauseMenu.GetComponent<Image>().enabled = true;
         leftCursor.GetComponent<Image>().enabled = true;
-        is_animating = true;
         animationTimer = 0;
         GameManager.pausedGame = true;
         pauseMenu.SetTrigger("Pause");
@@ -43,8 +43,8 @@ public class UIManager : MonoBehaviour
 
     public void Resume()
     {
-        audioSrc.Play();
         is_animating = true;
+        audioSrc.Play();
         animationTimer = 0;
         GameManager.pausedGame = false;
         pauseMenu.SetTrigger("Unpause");
