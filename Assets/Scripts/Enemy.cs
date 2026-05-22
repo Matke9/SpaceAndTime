@@ -2,14 +2,15 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+    [SerializeField] private EnemyDefinition _definition;
+
     [SerializeField] private Transform player;
     [SerializeField] private float time_value = 5f;
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float detectionRange = 10f;
     [SerializeField] private float attackRange = 0.3f;
-    //[SerializeField] private float stoppingDistance = 1f;
     [SerializeField] private LayerMask obstacleLayer;
-    
+
     public bool isAttacking;
 
     private Vector3 lastKnownPlayerPosition;
@@ -24,11 +25,20 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
+        if (_definition != null)
+        {
+            moveSpeed = _definition.moveSpeed;
+            detectionRange = _definition.detectionRange;
+            attackRange = _definition.attackRange;
+            attackCooldown = _definition.attackCooldown;
+            time_value = _definition.timeRefundOnKill;
+            obstacleLayer = _definition.obstacleMask;
+        }
+
         rb = GetComponent<Rigidbody2D>();
         if (player == null)
-        {
             player = GameObject.FindGameObjectWithTag("Player")?.transform;
-        }
+
         lastKnownPlayerPosition = transform.position;
         hasReachedLastPosition = true;
     }
@@ -84,9 +94,7 @@ public class Enemy : MonoBehaviour
         }
 
         if (!canSeePlayer && !isMovingToLastPosition && !hasReachedLastPosition)
-        {
             isMovingToLastPosition = true;
-        }
     }
 
     private void MoveEnemy()
@@ -111,7 +119,7 @@ public class Enemy : MonoBehaviour
 
             if (attackTimer >= attackCooldown)
             {
-                GameTimeManager.ReduceTime(2);
+                GameTimeManager.ReduceTime(GameSettings.Current.enemyAttackTimeDrain);
                 attackTimer = 0f;
             }
             return;
@@ -134,9 +142,7 @@ public class Enemy : MonoBehaviour
 
         // Flip sprite
         if (direction.x != 0)
-        {
             transform.localScale = new Vector3(-(Mathf.Sign(direction.x) * 0.67f), 0.67f, 1);
-        }
 
         currentWoddle += sideWoddle;
 
@@ -154,5 +160,4 @@ public class Enemy : MonoBehaviour
         GameTimeManager.AddTime(time_value);
         Destroy(gameObject);
     }
-
 }

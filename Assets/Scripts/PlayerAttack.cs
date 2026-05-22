@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour
     {
         audioSource.Play();
         //anim.SetTrigger("attack");
-        if (GameTimeManager.ReduceTime(5) && GameManager.pausedGame == false)
+        if (GameTimeManager.ReduceTime(GameSettings.Current.attackTimeCost) && GameManager.pausedGame == false)
         {
             cooldownTimer = 0;
             fireballs[FindFireball()].transform.position =

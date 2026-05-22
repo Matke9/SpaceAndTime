@@ -1,21 +1,20 @@
 using UnityEngine;
-using UnityEngine.Events;
 
 public class GameTimeManager : MonoBehaviour
 {
-    private static float gameTime = 75f;
+    private static float gameTime;
     private static PlayerController playerController;
-    
+
     void Start()
     {
-        gameTime = 75f;
+        gameTime = GameSettings.Current.startingTime;
         playerController = FindFirstObjectByType<PlayerController>();
     }
+
     void Update()
     {
-
-        if(GameManager.pausedGame == false && gameTime > 0)
-           gameTime -= Time.deltaTime;
+        if (GameManager.pausedGame == false && gameTime > 0)
+            gameTime -= Time.deltaTime;
         if (gameTime <= 0)
         {
             playerController.Die();
@@ -28,16 +27,14 @@ public class GameTimeManager : MonoBehaviour
     {
         return gameTime;
     }
-    
+
     public static void AddTime(float time)
     {
         if (GameManager.pausedGame == false)
         {
             gameTime += time;
-            if (gameTime >= 75)
-            {
-                gameTime = 75;
-            }
+            if (gameTime >= GameSettings.Current.maxTime)
+                gameTime = GameSettings.Current.maxTime;
         }
     }
 
@@ -56,9 +53,4 @@ public class GameTimeManager : MonoBehaviour
             return false;
         }
     }
-    /*
-    private void changeTime(float timeAdd) 
-    {
-        if(gameTime<=25f && )
-    }*/
 }

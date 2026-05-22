@@ -17,23 +17,26 @@ public class SongSpeedUp : MonoBehaviour
 
     void Update()
     {
-        if (GameTimeManager.GetTime() < 25 && songCount != 2)
+        float time = GameTimeManager.GetTime();
+        float fastThreshold = GameSettings.Current.musicFastThreshold;
+        float mediumThreshold = GameSettings.Current.musicMediumThreshold;
+
+        if (time < fastThreshold && songCount != 2)
         {
             songCount = 2;
             audioSrc.Stop();
             audioSrc.clip = songFast;
             audioSrc.Play();
-
         }
-        else if (GameTimeManager.GetTime() < 50 && GameTimeManager.GetTime() > 25 && songCount !=1)
+        else if (time >= fastThreshold && time < mediumThreshold && songCount != 1)
         {
             songCount = 1;
             audioSrc.Stop();
             audioSrc.clip = songMedium;
             audioSrc.Play();
         }
-        else if (GameTimeManager.GetTime() > 50 && songCount !=0)
-        { 
+        else if (time >= mediumThreshold && songCount != 0)
+        {
             songCount = 0;
             audioSrc.Stop();
             audioSrc.clip = songSlow;
@@ -55,5 +58,4 @@ public class SongSpeedUp : MonoBehaviour
     {
         audioSrc.Play();
     }
-
 }

@@ -76,22 +76,22 @@ risk**. Each phase ends with a clear, testable acceptance check.
 
 Done before any gameplay code is touched. Pure plumbing.
 
-- [ ] **Add `README.md`** with: one-paragraph pitch, Unity version,
+- [x] **Add `README.md`** with: one-paragraph pitch, Unity version,
       "open and press Play" instructions, link to `CLAUDE.md` and this
       plan.
-- [ ] **Add `.editorconfig`** with: 4-space indent, Allman braces,
+- [x] **Add `.editorconfig`** with: 4-space indent, Allman braces,
       `dotnet_style_*` rules matching the **target** style (PascalCase
       types/methods, `_camelCase` private fields).
-- [ ] **Add a `LICENSE` file** (proprietary or MIT — user's call).
-- [ ] **Add Unity build artefacts to `.gitignore`**: `Web/`, `Web.zip`,
+- [x] **Add a `LICENSE` file** (proprietary or MIT — user's call).
+- [x] **Add Unity build artefacts to `.gitignore`**: `Web/`, `Web.zip`,
       `UpgradeLog.htm`. Remove them from tracking
       (`git rm -r --cached Web Web.zip UpgradeLog.htm`).
-- [ ] **Adopt a commit-message convention** (Conventional Commits is
+- [x] **Adopt a commit-message convention** (Conventional Commits is
       enough: `feat:`, `fix:`, `refactor:`, `chore:`, `docs:`). Add a
       one-paragraph "How we write commits" section to the README.
-- [ ] **Add a `.github/PULL_REQUEST_TEMPLATE.md`** with: summary, screenshots
+- [x] **Add a `.github/PULL_REQUEST_TEMPLATE.md`** with: summary, screenshots
       / GIF for visual changes, manual verification checklist.
-- [ ] **Branch protection on `main`**: require PR + one review. (Done in
+- [x] **Branch protection on `main`**: require PR + one review. (Done in
       GitHub settings, not in the repo, but recorded here.)
 
 **Acceptance:** repo size drops by ~30 MB; `git log` going forward
@@ -104,35 +104,35 @@ the editorconfig style.
 
 Make the code easier to read before changing what it does.
 
-- [ ] Rename `PauseMenu.cs::class pauseMenu` → delete the file entirely
+- [x] Rename `PauseMenu.cs::class pauseMenu` → delete the file entirely
       (it's the dead pause system; `UIManager` is the live one).
       Verify nothing in any scene references it
       (search the YAML for the script GUID, not the class name).
-- [ ] Standardise method casing to **PascalCase** for public API:
+- [x] Standardise method casing to **PascalCase** for public API:
       `playGame` → `PlayGame`, `quitGame` → `QuitGame`,
       `pickUpKey` → `PickUpKey`, `useKey` → `UseKey`,
       `changePicture` → `ChangePicture`, `teleport` → `Teleport`.
       Update UI Button OnClick wiring in scenes (each renamed method
       needs its scene reference fixed — this is editor work).
-- [ ] Standardise private fields to `camelCase`; rewrite the few
+- [x] Standardise private fields to `camelCase`; rewrite the few
       `is_dragging` / `is_rotating` to `isDragging` / `isRotating`.
 - [ ] Remove empty `Update()` / `Start()` bodies in `Door`, `Key`,
       `Portal`, `PortalCollider`, `ShootSound`, `MainMenu`,
       `HandController` (if Start is truly empty).
-- [ ] Remove or downgrade dev-only `Debug.Log` strings:
+- [x] Remove or downgrade dev-only `Debug.Log` strings:
       `"CRAZYYY"`, `"abc"`, `"Craztasda"`, `"pinestse"`, `"Quit"`,
       commented `//Debug.Log(stage)`. Keep the `LogWarning` in
       `CameraController` (it's actually useful).
-- [ ] Decide on the future of `ShootSound.cs` (presses K to test).
+- [x] Decide on the future of `ShootSound.cs` (presses K to test).
       Either delete it or move it to a clearly-marked `Dev/` folder.
-- [ ] Remove the typo `dirrection` in `Projectile.cs` (local var only —
+- [x] Remove the typo `dirrection` in `Projectile.cs` (local var only —
       safe).
-- [ ] Translate the Serbian inline comments in `DragDropSystem.cs` to
+- [x] Translate the Serbian inline comments in `DragDropSystem.cs` to
       English (or, equivalently, delete the ones that just restate the
       code — most do).
-- [ ] Rename `EnemyCandleSecond Variant.prefab` (and friends) to remove
+- [x] Rename `EnemyCandleSecond Variant.prefab` (and friends) to remove
       the space — **only** via the Unity editor so references update.
-- [ ] Add a stub `ARCHITECTURE.md` that points at `CLAUDE.md` and this
+- [x] Add a stub `ARCHITECTURE.md` that points at `CLAUDE.md` and this
       plan, and lists the modules-to-be (see Phase 4).
 
 **Acceptance:** scenes still play; the Unity Console is quiet on Play;
