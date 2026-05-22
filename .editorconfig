@@ -1,0 +1,64 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+indent_style = space
+indent_size = 4
+
+[*.{yml,yaml,json}]
+indent_size = 2
+
+[*.md]
+trim_trailing_whitespace = false
+
+# Unity-serialized files: leave formatting to Unity, do not reformat.
+[*.{unity,prefab,asset,meta,mat,anim,controller,inputactions}]
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.cs]
+indent_size = 4
+
+# --- New-line preferences (Allman braces) ---
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_else = true
+csharp_new_line_before_catch = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_between_query_expression_clauses = true
+
+# --- Indentation ---
+csharp_indent_case_contents = true
+csharp_indent_switch_labels = true
+
+# --- Naming: types and public/protected members are PascalCase ---
+dotnet_naming_rule.types_and_public_members_pascal_case.severity = warning
+dotnet_naming_rule.types_and_public_members_pascal_case.symbols = types_and_public_members
+dotnet_naming_rule.types_and_public_members_pascal_case.style = pascal_case
+
+dotnet_naming_symbols.types_and_public_members.applicable_kinds = class,struct,enum,interface,delegate,method,property,event
+dotnet_naming_symbols.types_and_public_members.applicable_accessibilities = public,protected,protected_internal
+
+dotnet_naming_style.pascal_case.capitalization = pascal_case
+
+# --- Naming: private fields are _camelCase ---
+dotnet_naming_rule.private_fields_underscore_camel_case.severity = suggestion
+dotnet_naming_rule.private_fields_underscore_camel_case.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore_camel_case.style = underscore_camel_case
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_style.underscore_camel_case.capitalization = camel_case
+dotnet_naming_style.underscore_camel_case.required_prefix = _
+
+# --- Code style ---
+dotnet_sort_system_directives_first = true
+csharp_prefer_braces = true:suggestion
+dotnet_style_qualification_for_field = false:suggestion
+dotnet_style_qualification_for_property = false:suggestion
+dotnet_style_qualification_for_method = false:suggestion
