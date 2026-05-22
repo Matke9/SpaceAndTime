@@ -11,7 +11,7 @@ public class Green : MonoBehaviour
             spriteRenderer.sprite = stages[stage];
     }
     
-    public bool changePicture()
+    public bool ChangePicture()
     {
         if (stage + 1 < stages.Length)
         {

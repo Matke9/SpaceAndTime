@@ -7,16 +7,16 @@ public class DragDropSystem : MonoBehaviour
     [SerializeField] public Grid grid;
     [SerializeField] private float lerpSpeed = 15f;
     [SerializeField] private float rotationLerpSpeed = 5f;
-    [SerializeField] private LayerMask collisionCheckMask; // Layeri koje proveravamo
-    [SerializeField] private Vector2 tileCheckSize = new Vector2(1.8f, 1.8f); // Veličina provere
+    [SerializeField] private LayerMask collisionCheckMask; // Layers we test for collisions
+    [SerializeField] private Vector2 tileCheckSize = new Vector2(1.8f, 1.8f); // Overlap-check box size
     
     private GameObject draggedObject;
     public Dictionary<Vector2Int, GameObject> draggableObjects = new Dictionary<Vector2Int, GameObject>();
-    private bool is_dragging = false;
-    private bool is_rotating = false;
+    private bool isDragging = false;
+    private bool isRotating = false;
     private Vector3 oldPosition;
     Quaternion targetRotation;
-    private bool canPlace = true; // Flag za proveru da li možemo postaviti objekat
+    private bool canPlace = true; // Whether the dragged object can be placed
 
     void Update()
     {
@@ -24,7 +24,7 @@ public class DragDropSystem : MonoBehaviour
         {
             if (draggableObjects.TryGetValue(GetMouseCell(), out draggedObject) && draggedObject.GetComponent<Draggable>().tileType == 0)
             {
-                // Proveravamo kolizije tokom prevlačenja
+                // Check for collisions before starting the drag
                 Vector3 targetPos = GetNewPositionInt();
                 canPlace = !CheckTileOccupied(targetPos);
                 if (canPlace)
@@ -34,7 +34,7 @@ public class DragDropSystem : MonoBehaviour
             }
         }
         
-        if (is_dragging)
+        if (isDragging)
         {
             draggedObject.transform.position = Vector3.Lerp(
                 draggedObject.transform.position, 
@@ -46,32 +46,32 @@ public class DragDropSystem : MonoBehaviour
             {
                 Vector3 currentRotation = draggedObject.transform.rotation.eulerAngles;
                 targetRotation = Quaternion.Euler(currentRotation.x, currentRotation.y, currentRotation.z - 90f);
-                is_rotating = true;
+                isRotating = true;
                 Vector3 brimRotation = draggedObject.GetComponent<Draggable>().outerBrim.transform.rotation.eulerAngles;
                 brimRotation.z += 90f;
                 draggedObject.GetComponent<Draggable>().outerBrim.transform.rotation = Quaternion.Euler(brimRotation);
             }
 
-            // Rotacija samo kad je potrebna
-            if (is_rotating)
+            // Rotate only while a rotation is in progress
+            if (isRotating)
             {
                 draggedObject.transform.rotation = Quaternion.RotateTowards(
                     draggedObject.transform.rotation,
                     targetRotation,
-                    rotationLerpSpeed * 360f * Time.deltaTime // Množimo sa 360 da dobijemo stepene po sekundi
+                    rotationLerpSpeed * 360f * Time.deltaTime // Multiply by 360 to get degrees per second
                 );
 
-                // Provera da li smo blizu ciljne rotacije
+                // Snap once we are close enough to the target rotation
                 if (Quaternion.Angle(draggedObject.transform.rotation, targetRotation) < 0.1f)
                 {
-                    draggedObject.transform.rotation = targetRotation; // Postavljamo tačno na cilj
-                    is_rotating = false;
+                    draggedObject.transform.rotation = targetRotation; // Snap exactly to target
+                    isRotating = false;
                 }
             }
 
         }
 
-        if (Input.GetMouseButtonUp(0) && is_dragging)
+        if (Input.GetMouseButtonUp(0) && isDragging)
         {
             StopDragging();
         }
@@ -79,7 +79,7 @@ public class DragDropSystem : MonoBehaviour
 
     private bool CheckTileOccupied(Vector3 position)
     {
-        // Proveravamo overlap sa objektima iz specifičnog layer mask-a
+        // Check overlap with objects on the given layer mask
         Collider2D[] colliders = Physics2D.OverlapBoxAll(
             position,
             tileCheckSize,
@@ -96,10 +96,10 @@ public class DragDropSystem : MonoBehaviour
         draggableObjects.Remove(oldPos);
         UpdateTileAndNeighbors(oldPos);
         oldPosition = draggedObject.transform.position;
-        is_dragging = true;
+        isDragging = true;
         SetLayerRecursively(draggedObject, 8);
         targetRotation = draggedObject.transform.rotation;
-        is_rotating = false;
+        isRotating = false;
     }
     
     private void StopDragging()
@@ -120,20 +120,20 @@ public class DragDropSystem : MonoBehaviour
             draggedObject.transform.position = GetNewPositionInt();
             draggableObjects.Add(newCell, draggedObject);
             
-            // Update-ujemo susede na novoj poziciji
+            // Update neighbours at the new position
             UpdateTileAndNeighbors(newCell);
         }
         
-        is_dragging = false;
+        isDragging = false;
         SetLayerRecursively(draggedObject, 7);
     }
 
     public void UpdateTileAndNeighbors(Vector2Int centerPos)
     {
-        // Update centralnog tile-a
+        // Update the centre tile
         UpdateOuterBrims(centerPos);
         
-        // Update suseda
+        // Update neighbours
         Vector2Int[] neighbors = new Vector2Int[]
         {
             centerPos + Vector2Int.right,
@@ -190,11 +190,11 @@ public class DragDropSystem : MonoBehaviour
         GameObject center_tile;
         bool has_center = draggableObjects.TryGetValue(tilePos, out center_tile);
 
-        // Proveravamo sve susedne tile-ove
-        CheckAndUpdateWall(tilePos, Vector2Int.right); // Desno
-        CheckAndUpdateWall(tilePos, Vector2Int.left);  // Levo
-        CheckAndUpdateWall(tilePos, Vector2Int.up);    // Gore
-        CheckAndUpdateWall(tilePos, Vector2Int.down);  // Dole
+        // Check all neighbouring tiles
+        CheckAndUpdateWall(tilePos, Vector2Int.right); // Right
+        CheckAndUpdateWall(tilePos, Vector2Int.left);  // Left
+        CheckAndUpdateWall(tilePos, Vector2Int.up);    // Up
+        CheckAndUpdateWall(tilePos, Vector2Int.down);  // Down
         
     }
     
@@ -203,11 +203,11 @@ public class DragDropSystem : MonoBehaviour
         GameObject currentTile;
         if (!draggableObjects.TryGetValue(tilePos, out currentTile)) return;
 
-        // Proveravamo sve susedne tile-ove
-        CheckAndUpdateWall(tilePos, Vector2Int.right); // Desno
-        CheckAndUpdateWall(tilePos, Vector2Int.left);  // Levo
-        CheckAndUpdateWall(tilePos, Vector2Int.up);    // Gore
-        CheckAndUpdateWall(tilePos, Vector2Int.down);  // Dole
+        // Check all neighbouring tiles
+        CheckAndUpdateWall(tilePos, Vector2Int.right); // Right
+        CheckAndUpdateWall(tilePos, Vector2Int.left);  // Left
+        CheckAndUpdateWall(tilePos, Vector2Int.up);    // Up
+        CheckAndUpdateWall(tilePos, Vector2Int.down);  // Down
     }
 
 
@@ -219,11 +219,11 @@ public class DragDropSystem : MonoBehaviour
             Vector2Int neighborPos = centerPos + direction;
             bool hasNeighbor = draggableObjects.ContainsKey(neighborPos);
 
-            // Dobavljamo wall objekat za trenutnu stranu
+            // Get the wall object for this side
             Transform wall = GetWallForDirection(centerTile.transform, direction);
             if (wall != null)
             {
-                // Aktiviramo zid ako nema suseda, deaktiviramo ako ima
+                // Enable the wall when there is no neighbour, disable it when there is
                 wall.gameObject.SetActive(!hasNeighbor);
             }
         }
@@ -247,7 +247,7 @@ public class DragDropSystem : MonoBehaviour
         return null;
     }
 
-    // Modifikujemo Draggable.Start() da inicijalizuje sve susede
+    // Called from Draggable.Start() to register a tile and refresh its neighbours
     public void InitializeTile(Vector2Int gridPos)
     {
         if (!draggableObjects.ContainsKey(gridPos))

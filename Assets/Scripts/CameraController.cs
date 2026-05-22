@@ -35,17 +35,17 @@ public class CameraController : MonoBehaviour
     {
         if (target == null) return;
 
-        // Izračunaj željenu poziciju
+        // Compute the desired position
         Vector3 desiredPosition = target.position + offset;
         
-        // Ako koristimo granice, ograniči željenu poziciju
+        // Clamp the desired position when boundaries are enabled
         if (useBoundaries)
         {
             desiredPosition.x = Mathf.Clamp(desiredPosition.x, minX, maxX);
             desiredPosition.y = Mathf.Clamp(desiredPosition.y, minY, maxY);
         }
 
-        // Smooth kretanje ka željenoj poziciji
+        // Smoothly move toward the desired position
         Vector3 smoothedPosition = Vector3.SmoothDamp(
             transform.position,
             desiredPosition,
@@ -53,17 +53,17 @@ public class CameraController : MonoBehaviour
             1f / smoothSpeed
         );
 
-        // Postavi novu poziciju kamere
+        // Apply the new camera position
         transform.position = smoothedPosition;
     }
 
-    // Pomoćna funkcija za postavljanje novog targeta
+    // Helper for assigning a new follow target
     public void SetTarget(Transform newTarget)
     {
         target = newTarget;
     }
 
-    // Vizuelni prikaz granica u editoru
+    // Draw the boundary box in the editor
     private void OnDrawGizmosSelected()
     {
         if (!useBoundaries) return;
