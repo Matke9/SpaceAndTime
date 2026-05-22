@@ -68,6 +68,13 @@ sysinfo.txt
 *.unitypackage.meta
 *.app
 
+# WebGL build output (run File > Build to regenerate; do not commit)
+/Web/
+*.zip
+
+# Stale Unity upgrade report
+UpgradeLog.htm
+
 # Crashlytics generated file
 crashlytics-build.properties
 

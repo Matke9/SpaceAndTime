@@ -23,12 +23,11 @@ public class GreenCollider : MonoBehaviour
     {
         if (other.TryGetComponent(out Projectile projectile))
         {
-            Debug.Log("abc");
             if (cooldown <= 0)
             {
                 cooldown = 0.1f;
                 projectile.Deactivate();
-                if (!green.changePicture())
+                if (!green.ChangePicture())
                 {
                     gameObject.SetActive(false);
                 }

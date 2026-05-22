@@ -4,7 +4,6 @@ public class Projectile : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     [SerializeField] private float speed = 5;
-    private float direction;
     private bool hit;
     private float lifetime;
     private Rigidbody2D rb;
@@ -55,13 +54,13 @@ public class Projectile : MonoBehaviour
         hit = false;
         boxCollider.enabled = true;
 
-        Vector3 dirrection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        float angle = Mathf.Atan2(dirrection.y, dirrection.x) * Mathf.Rad2Deg;
+        Vector3 aimDirection = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+        float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
         transform.rotation = Quaternion.Euler(0, 0, angle);
-        dirrection.z = 0;
-        dirrection.Normalize();;
-        currentDirection = dirrection * speed;
-        rb.linearVelocity = dirrection * speed;
+        aimDirection.z = 0;
+        aimDirection.Normalize();
+        currentDirection = aimDirection * speed;
+        rb.linearVelocity = aimDirection * speed;
     }
     public void Deactivate()
     {

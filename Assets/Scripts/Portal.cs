@@ -23,12 +23,7 @@ public class Portal : MonoBehaviour
     }
 
 
-    void Update()
-    {
-        
-    }
-
-    public void changePicture()
+    public void ChangePicture()
     {
         if (stage + 1 < stages.Length)
         {
@@ -41,9 +36,8 @@ public class Portal : MonoBehaviour
             animator.enabled = true;
             animator.SetBool("ActivePortal", true);
         }
-        //Debug.Log(stage)
     }
-    public void teleport()
+    public void Teleport()
     {
         audioSource.Play();
         player.position = destination.position;

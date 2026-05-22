@@ -124,11 +124,11 @@ public class PlayerController : MonoBehaviour
         playerRigidbody2D.linearVelocity = Vector2.zero;   
     }
     
-    public void pickUpKey()
+    public void PickUpKey()
     {
         key++;
     }
-    public bool useKey()
+    public bool UseKey()
     {
         if (key > 0)
         {

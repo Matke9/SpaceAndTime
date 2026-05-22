@@ -1,5 +1,4 @@
 using UnityEngine;
-using static Unity.VisualScripting.Member;
 
 public class SongSpeedUp : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class SongSpeedUp : MonoBehaviour
     [SerializeField] private AudioClip songFast;
     private int songCount;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         songCount = 0;
@@ -17,7 +15,6 @@ public class SongSpeedUp : MonoBehaviour
         audioSrc.Play();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (GameTimeManager.GetTime() < 25 && songCount != 2)
@@ -44,19 +41,17 @@ public class SongSpeedUp : MonoBehaviour
         }
     }
 
-    public void playSongSlow()
+    public void PlaySongSlow()
     {
-        
         audioSrc.Play();
     }
 
-    public void playSongMedium()
+    public void PlaySongMedium()
     {
-
         audioSrc.Play();
     }
 
-    public void playSongFast()
+    public void PlaySongFast()
     {
         audioSrc.Play();
     }
