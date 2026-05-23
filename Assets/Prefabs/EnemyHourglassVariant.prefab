@@ -64,9 +64,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5778160202145287642, guid: e4812b238a0544845b4db2e55a70a295, type: 3}
+      propertyPath: _definition
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7439844173896491745, guid: e4812b238a0544845b4db2e55a70a295, type: 3}
       propertyPath: m_Name
-      value: EnemyHourglass Variant
+      value: EnemyHourglassVariant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
