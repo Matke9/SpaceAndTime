@@ -5,6 +5,22 @@ multi-year project: more levels, more tile/enemy/projectile types, more
 team members, and a steady release cadence — without rewriting it all at
 once.
 
+**The product target is explicitly a moving target.** New tile variants
+(basic, immovable, time-reversible — and more), new enemy archetypes,
+new projectiles, new mechanics, and new visual styles will keep arriving.
+Every system this plan touches must therefore be:
+
+- **Modular** — one responsibility per file, no god classes.
+- **Independent** — talks to peers through interfaces, events, and
+  ScriptableObject data, not by reaching into their internals.
+- **Replaceable** — a concrete behaviour can be swapped for another
+  behind the same interface without ripple changes.
+- **Expandable** — adding a new variant requires a new asset (and
+  optionally a new component) and zero edits to existing systems.
+
+If a phase below appears to violate these principles for short-term
+convenience, raise it.
+
 **Non-goals:**
 - A clean-room rewrite. Every phase below preserves the current gameplay
   and is independently shippable.
@@ -185,22 +201,22 @@ The static-field singletons are the single biggest correctness risk and
 testability blocker. Replace them with **explicit services** that other
 code requests.
 
-- [ ] Introduce an `IGameTime` service (interface) with `Get`, `Add`,
+- [x] Introduce an `IGameTime` service (interface) with `Get`, `Add`,
       `Reduce` methods and a `TimeChanged` event.
-- [ ] Introduce an `IGameState` service exposing `IsPaused`,
+- [x] Introduce an `IGameState` service exposing `IsPaused`,
       `IsGameOver`, events `Paused`, `Resumed`, `LevelCleared`,
       `PlayerDied`.
-- [ ] Provide both as `MonoBehaviour` implementations on a single
+- [x] Provide both as `MonoBehaviour` implementations on a single
       `GameSystems` root object (one per scene), with a static
       service-locator `GameSystems.Time` / `GameSystems.State` —
       simpler than full DI, gives us testability and one obvious owner.
-- [ ] Migrate consumers one at a time:
+- [x] Migrate consumers one at a time:
       `WatchManager`, `SongSpeedUp` → `IGameTime`;
       `PlayerController`, `Enemy`, `Projectile`, `DragDropSystem`,
       `Dies`, `Wins`, `UIManager` → `IGameState`.
-- [ ] Replace per-frame polling (`if (GameManager.passed) …`) with
+- [x] Replace per-frame polling (`if (GameManager.passed) …`) with
       **event subscriptions** (`state.LevelCleared += ShowWinPanel`).
-- [ ] Keep the old `GameManager`/`GameTimeManager` types as thin
+- [x] Remove the old static API and replace with services (no thin
       adapters during the migration to avoid a flag-day rewrite; delete
       once no callers remain.
 

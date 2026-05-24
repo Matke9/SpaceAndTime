@@ -12,19 +12,15 @@ public class UIManager : MonoBehaviour
     [SerializeField] AudioSource audioSrc;
     bool is_animating = false;
     private float animationTimer = 1;
+
     void Update()
     {
         AnimationTimer();
         if (Input.GetKeyDown(KeyCode.Escape) && !is_animating)
         {
-            if (!GameManager.pausedGame)
-            {
-                Pause();                                                            
-            }
-            else
-            {
-                Resume();
-            }
+            bool paused = GameSystems.State?.IsPaused ?? false;
+            if (!paused) Pause();
+            else Resume();
         }
     }
 
@@ -35,7 +31,7 @@ public class UIManager : MonoBehaviour
         pauseMenu.GetComponent<Image>().enabled = true;
         leftCursor.GetComponent<Image>().enabled = true;
         animationTimer = 0;
-        GameManager.pausedGame = true;
+        GameSystems.State?.SetPaused(true);
         pauseMenu.SetTrigger("Pause");
         cursor.SetTrigger("Pause");
         leftHand.SetTrigger("Pause");
@@ -46,7 +42,7 @@ public class UIManager : MonoBehaviour
         is_animating = true;
         audioSrc.Play();
         animationTimer = 0;
-        GameManager.pausedGame = false;
+        GameSystems.State?.SetPaused(false);
         pauseMenu.SetTrigger("Unpause");
         cursor.SetTrigger("Unpause");
         leftHand.SetTrigger("Unpause");
@@ -56,7 +52,7 @@ public class UIManager : MonoBehaviour
     {
         Application.Quit();
     }
-    
+
     public void Restart()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -72,7 +68,8 @@ public class UIManager : MonoBehaviour
         if (is_animating)
         {
             animationTimer += Time.deltaTime;
-            if (!GameManager.pausedGame)
+            bool paused = GameSystems.State?.IsPaused ?? false;
+            if (!paused)
             {
                 leftCursor.position = Vector3.Lerp(leftCursor.position, new Vector3(-500, 0, 0), animationTimer);
             }

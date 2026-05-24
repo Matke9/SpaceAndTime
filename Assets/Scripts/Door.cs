@@ -14,7 +14,7 @@ public class Door : MonoBehaviour
     {
         if (other.GetComponent<PlayerController>() != null && playerController.UseKey())
         {
-            GameManager.NextLevel();
+            GameSystems.State?.TriggerLevelCleared();
         }
     }
 }

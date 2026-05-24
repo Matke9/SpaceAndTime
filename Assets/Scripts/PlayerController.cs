@@ -29,7 +29,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.pausedGame == false && death == false)
+        var state = GameSystems.State;
+        if ((state == null || !state.IsPaused) && death == false)
         {
             bool pressedUp;
             bool pressedLeft;

@@ -16,10 +16,59 @@ known sharp edges of this codebase.
   dated **2025-06-08**), with a handful of polish commits in the days
   following. The codebase reflects that: it works, but it's optimised for
   "ship by the deadline" rather than long-term maintainability.
-- **Engine:** **Unity 6 (`6000.0.40f1`)** with the **Universal Render Pipeline
+- **Engine:** **Unity 6 (`6000.3.6f1`)** with the **Universal Render Pipeline
   (URP) 17.0.4** and the **2D Feature** package.
 - **Primary build target:** **WebGL** (a built `Web/` folder and `Web.zip`
   are checked into the repo — see §7 "Known sharp edges").
+
+---
+
+## 1a. Design philosophy — read this before adding anything new
+
+**The game is being actively developed and its content will keep growing.**
+New tile types, new enemy archetypes, new projectiles, new interactables,
+new mechanics, new levels, and new visual styles are all expected.
+
+Treat every system as if it will gain a sibling within a month:
+
+- **Modular.** A system does one thing. Movement, attacking, pausing, time
+  tracking, tile placement — each lives in one file with one
+  responsibility. New behaviour goes in a new file, not bolted onto an
+  existing one.
+- **Independent.** No system reaches into another system's internals.
+  Communication goes through interfaces, ScriptableObject data, or events.
+  Avoid `FindFirstObjectByType` once a service layer exists for the thing
+  you need (Phase 3 onward).
+- **Replaceable.** Any concrete implementation should be swappable for
+  another behind the same interface. This is why we have `IGameTime` /
+  `IGameState`, `EnemyDefinition`, `TileDefinition`. A new behaviour =
+  a new `ScriptableObject` (data) and/or a new component (logic), not an
+  edit to a god class.
+- **Expandable.** Adding a new tile colour, a new enemy archetype, or a
+  new projectile must require only:
+  1. one new ScriptableObject asset (data), and
+  2. optionally one new MonoBehaviour component (behaviour).
+  No edits to `DragDropSystem`, `Enemy.cs`, etc. If you find yourself
+  about to add a switch/case or an enum branch in a long-lived system,
+  stop and ask whether the new variant should live in its own component
+  or definition instead.
+
+**Tile types known to be in scope:**
+
+- *Basic / movable* — yellow tiles, the puzzle's main mover. Wired via
+  `YellowTileDefinition` (or per-instance variants going forward).
+- *Immovable* — red tiles, locked in place. Wired via
+  `RedTileDefinition`.
+- *Time-reversible* — a planned movable variant; details to be designed.
+  When added, it will get its own `TileDefinition` and (likely) its own
+  behaviour component.
+- *Special / interactive* — the current green / portal tiles, which
+  carry their own behaviour script (`Green.cs`, `Portal.cs`). New
+  variants should follow the same pattern: a `TileDefinition` plus an
+  optional behaviour component, never an edit to `DragDropSystem`.
+
+Expect more types beyond these. If you write code that hardcodes the
+current set, you are creating tomorrow's bug.
 
 ---
 
@@ -159,15 +208,44 @@ refactor plan (`REFACTORING_PLAN.md`) describes what to change going forward.
   unless you're rewriting the surrounding code anyway.
 
 ### Architecture invariants the code relies on today
-- `GameManager.pausedGame` is the **global pause source of truth**. Every
-  `Update` / `FixedUpdate` that should freeze when paused checks this
-  static directly. If you add new gameplay behaviour that runs in
-  `Update`, gate it on `GameManager.pausedGame == false`.
-- `GameTimeManager.gameTime` is **both the timer and the player's HP**.
-  Reducing it to ≤ 0 kills the player. Calls to `ReduceTime` return
-  `false` and trigger `GameOver` when they would underflow.
-- `GameManager.NextLevel()` sets `passed = true`; pressing `Space`
-  afterwards (handled in `GameManager.Update`) loads the next scene.
+- **Tunable values live in ScriptableObjects.** As of Phase 2:
+  - `GameSettings` (singleton, loaded from `Assets/Resources/Data/GameSettings.asset`
+    via `GameSettings.Current`) holds the global magic numbers: `startingTime`,
+    `maxTime`, `attackTimeCost`, `enemyAttackTimeDrain`, `musicMediumThreshold`,
+    `musicFastThreshold`. **Do not** reintroduce hardcoded 75/5/2/50/25 values
+    — read them from `GameSettings.Current`.
+  - `EnemyDefinition` (per-archetype, under `Assets/Data/`) holds an
+    enemy's stats. `Enemy.cs` reads from `_definition` in `Start()` and
+    falls back to its own inspector fields when none is assigned.
+    A new enemy = a new prefab + a new `EnemyDefinition`, no `Enemy.cs` edit.
+  - `TileDefinition` (per-tile-type, under `Assets/Data/`) holds tile
+    metadata. `Draggable.IsMovable` reads from `_definition.isMovable`
+    and falls back to `tileType == YELLOW`. A new tile type = a new
+    `TileDefinition` (and a behaviour component if it has unique logic).
+    The `TileType` enum is a serialization shim and **must not** be
+    extended for new content; add a `TileDefinition` instead.
+- **Session state lives behind services, not statics.** As of Phase 3:
+  - `IGameState` (implemented by `GameManager`) owns `IsPaused`,
+    `IsGameOver`, `IsLevelCleared` plus the events `Paused`, `Resumed`,
+    `PlayerDied`, `LevelCleared`. Reach it via `GameSystems.State`.
+  - `IGameTime` (implemented by `GameTimeManager`) owns the countdown
+    plus the `TimeChanged` event. Reach it via `GameSystems.Time`.
+  - The previous `GameManager.pausedGame` / `GameTimeManager.GetTime()`
+    static API has been removed; **do not reintroduce static
+    mutable game state.** When a system reacts to a transition
+    (player died, level cleared, paused/resumed), subscribe to the
+    matching event instead of polling a flag every frame.
+- **Pause is a "current-state" check, not a polled change.** Per-frame
+  `Update` guards that skip work when paused stay as
+  `if (GameSystems.State?.IsPaused ?? false) return;`. Use events when
+  you care about the transition; use the property when you care about
+  the value right now.
+- **Health and the timer share one value.** `IGameTime.ReduceTime`
+  returns `false` and triggers `PlayerDied` (via `IGameState.TriggerGameOver`)
+  when the time would go non-positive.
+- `IGameState.TriggerLevelCleared()` sets `IsLevelCleared = true` and
+  pauses the game; pressing `Space` afterwards (handled inside
+  `GameManager.Update`) loads the next scene in the build.
 - The drag/drop tile registry (`DragDropSystem.draggableObjects`) is
   keyed by `Vector2Int` cell coordinates on `DragDropSystem.grid`. Tiles
   register themselves in `Draggable.Start()`.
@@ -238,18 +316,13 @@ These are issues that will surprise you. The refactor plan addresses most of
 them; for now, **work around** rather than "fix in passing", because each
 has cross-cutting implications.
 
-1. **Two parallel pause systems.** `UIManager.Pause/Resume` (animation-based)
-   is the one wired into the actual UI. `PauseMenu.cs` (class `pauseMenu`,
-   uses `Time.timeScale`) appears to be dead/legacy. **Don't add logic to
-   `PauseMenu.cs`** — touch `UIManager` instead.
-2. **Filename / class-name mismatch:** `PauseMenu.cs` declares `class
-   pauseMenu`. Unity tolerates this but it's a footgun.
-3. **Static singletons everywhere.** `GameManager`, `GameTimeManager`,
-   `PauseMenu.IsPause` all use static fields with no instance. This means:
-   - Scene reloads do **not** reset values unless explicitly set in
-     `Start` (and they sometimes are — e.g. `GameManager.Start` resets the
-     flags, `GameTimeManager.Start` resets `gameTime = 75f`).
-   - You cannot have two instances; you cannot easily unit-test them.
+1. ~~**Two parallel pause systems.**~~ *Resolved in Phase 1.*
+   `UIManager.Pause/Resume` is the only pause path; `PauseMenu.cs` was deleted.
+2. ~~**Filename / class-name mismatch.**~~ *Resolved in Phase 1.*
+3. ~~**Static singletons everywhere.**~~ *Resolved in Phase 3.*
+   State now lives behind `IGameState` / `IGameTime`, accessed via
+   `GameSystems.State` / `GameSystems.Time`. Scene reloads still need to
+   reinitialise — the implementations do this in `Awake`.
 4. **`FindFirstObjectByType` / `FindGameObjectWithTag` in `Start`.** Many
    scripts grab references this way. If the script's `Start` runs before
    the target exists (script execution order, additive scenes), it silently

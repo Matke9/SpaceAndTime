@@ -26,7 +26,8 @@ public class PlayerAttack : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer > attackCooldown && GameManager.pausedGame == false)
+        bool paused = GameSystems.State?.IsPaused ?? false;
+        if (Input.GetKeyDown(KeyCode.Space) && cooldownTimer > attackCooldown && !paused)
             Attack();
 
         cooldownTimer += Time.deltaTime;
@@ -35,8 +36,9 @@ public class PlayerAttack : MonoBehaviour
     private void Attack()
     {
         audioSource.Play();
-        //anim.SetTrigger("attack");
-        if (GameTimeManager.ReduceTime(GameSettings.Current.attackTimeCost) && GameManager.pausedGame == false)
+        var time = GameSystems.Time;
+        bool paused = GameSystems.State?.IsPaused ?? false;
+        if (time != null && time.ReduceTime(GameSettings.Current.attackTimeCost) && !paused)
         {
             cooldownTimer = 0;
             fireballs[FindFireball()].transform.position =

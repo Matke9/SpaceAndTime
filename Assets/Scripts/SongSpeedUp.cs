@@ -17,7 +17,9 @@ public class SongSpeedUp : MonoBehaviour
 
     void Update()
     {
-        float time = GameTimeManager.GetTime();
+        var gameTime = GameSystems.Time;
+        if (gameTime == null) return;
+        float time = gameTime.GetTime();
         float fastThreshold = GameSettings.Current.musicFastThreshold;
         float mediumThreshold = GameSettings.Current.musicMediumThreshold;
 

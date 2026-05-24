@@ -21,7 +21,8 @@ public class Projectile : MonoBehaviour
     private void Update()
     {
         if (hit) return;
-        if (GameManager.pausedGame == true)
+        bool paused = GameSystems.State?.IsPaused ?? false;
+        if (paused)
         {
             rb.linearVelocity = new Vector2(0, 0);
         }

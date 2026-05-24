@@ -1,56 +1,83 @@
+using System;
 using UnityEngine;
 
-public class GameTimeManager : MonoBehaviour
+[DefaultExecutionOrder(-100)]
+public class GameTimeManager : MonoBehaviour, IGameTime
 {
-    private static float gameTime;
-    private static PlayerController playerController;
+    private float _gameTime;
+    private PlayerController _playerController;
 
-    void Start()
+    public event Action<float> TimeChanged;
+
+    public float MaxTime => GameSettings.Current.maxTime;
+
+    private void Awake()
     {
-        gameTime = GameSettings.Current.startingTime;
-        playerController = FindFirstObjectByType<PlayerController>();
+        _gameTime = GameSettings.Current.startingTime;
+        GameSystems.RegisterTime(this);
     }
 
-    void Update()
+    private void Start()
     {
-        if (GameManager.pausedGame == false && gameTime > 0)
-            gameTime -= Time.deltaTime;
-        if (gameTime <= 0)
+        _playerController = FindFirstObjectByType<PlayerController>();
+        TimeChanged?.Invoke(_gameTime);
+    }
+
+    private void OnDestroy()
+    {
+        GameSystems.UnregisterTime(this);
+    }
+
+    private void Update()
+    {
+        var state = GameSystems.State;
+        if (state == null || state.IsPaused) return;
+
+        if (_gameTime > 0)
         {
-            playerController.Die();
-            GameManager.GameOver();
-            gameTime = 0;
+            _gameTime -= Time.deltaTime;
+            TimeChanged?.Invoke(_gameTime);
+        }
+
+        if (_gameTime <= 0)
+        {
+            _gameTime = 0;
+            TimeChanged?.Invoke(_gameTime);
+            HandleTimeOut();
         }
     }
 
-    public static float GetTime()
+    public float GetTime() => _gameTime;
+
+    public void AddTime(float time)
     {
-        return gameTime;
+        var state = GameSystems.State;
+        if (state != null && state.IsPaused) return;
+
+        _gameTime += time;
+        if (_gameTime >= MaxTime)
+            _gameTime = MaxTime;
+        TimeChanged?.Invoke(_gameTime);
     }
 
-    public static void AddTime(float time)
+    public bool ReduceTime(float time)
     {
-        if (GameManager.pausedGame == false)
+        if (_gameTime - time > 0)
         {
-            gameTime += time;
-            if (gameTime >= GameSettings.Current.maxTime)
-                gameTime = GameSettings.Current.maxTime;
-        }
-    }
-
-    public static bool ReduceTime(float time)
-    {
-        if (gameTime - time > 0)
-        {
-            gameTime -= time;
+            _gameTime -= time;
+            TimeChanged?.Invoke(_gameTime);
             return true;
         }
-        else
-        {
-            playerController.Die();
-            GameManager.GameOver();
-            gameTime = 0;
-            return false;
-        }
+
+        _gameTime = 0;
+        TimeChanged?.Invoke(_gameTime);
+        HandleTimeOut();
+        return false;
+    }
+
+    private void HandleTimeOut()
+    {
+        if (_playerController != null) _playerController.Die();
+        GameSystems.State?.TriggerGameOver();
     }
 }

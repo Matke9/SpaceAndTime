@@ -1,21 +1,28 @@
-using System;
 using UnityEngine;
 
 public class Dies : MonoBehaviour
 {
     private GameObject dies;
+    private IGameState _state;
 
     private void Start()
     {
         dies = transform.Find("Dies").gameObject;
         dies.SetActive(false);
+
+        _state = GameSystems.State;
+        if (_state != null)
+            _state.PlayerDied += OnPlayerDied;
     }
 
-    void Update()
+    private void OnDestroy()
     {
-        if (GameManager.gameOver)
-        {
-            dies.SetActive(true);
-        }
+        if (_state != null)
+            _state.PlayerDied -= OnPlayerDied;
+    }
+
+    private void OnPlayerDied()
+    {
+        dies.SetActive(true);
     }
 }

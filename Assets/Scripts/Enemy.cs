@@ -51,7 +51,8 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameManager.pausedGame)
+        var state = GameSystems.State;
+        if (state != null && state.IsPaused)
         {
             rb.linearVelocity = Vector2.zero;
             return;
@@ -119,7 +120,7 @@ public class Enemy : MonoBehaviour
 
             if (attackTimer >= attackCooldown)
             {
-                GameTimeManager.ReduceTime(GameSettings.Current.enemyAttackTimeDrain);
+                GameSystems.Time?.ReduceTime(GameSettings.Current.enemyAttackTimeDrain);
                 attackTimer = 0f;
             }
             return;
@@ -157,7 +158,7 @@ public class Enemy : MonoBehaviour
 
     public void Die()
     {
-        GameTimeManager.AddTime(time_value);
+        GameSystems.Time?.AddTime(time_value);
         Destroy(gameObject);
     }
 }
