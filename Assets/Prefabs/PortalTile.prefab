@@ -186,6 +186,10 @@ PrefabInstance:
       propertyPath: tileType
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 7739986578492224957, guid: 71a58dcc965fc5a488b7d9f0fb30211c, type: 3}
+      propertyPath: _definition
+      value: 
+      objectReference: {fileID: 11400000, guid: a55cef5008acf56b13f24d2346aa17db, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -221,7 +225,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3dfda1889f6d3fb4798bb2a89d5a8c6d, type: 3}
+  m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 3dfda1889f6d3fb4798bb2a89d5a8c6d, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1

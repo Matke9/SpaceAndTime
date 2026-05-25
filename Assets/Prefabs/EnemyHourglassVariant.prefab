@@ -67,7 +67,7 @@ PrefabInstance:
     - target: {fileID: 5778160202145287642, guid: e4812b238a0544845b4db2e55a70a295, type: 3}
       propertyPath: _definition
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 11400000, guid: 4a34d2d4290a0bb02039c4a1b03eaa9a, type: 2}
     - target: {fileID: 7439844173896491745, guid: e4812b238a0544845b4db2e55a70a295, type: 3}
       propertyPath: m_Name
       value: EnemyHourglassVariant
